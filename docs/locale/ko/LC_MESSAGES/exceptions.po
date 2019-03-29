@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Zalando SE
+# This file is distributed under the same license as the Connexion package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Connexion 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-29 15:28+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../exceptions.rst:2
+msgid "Exception Handling"
+msgstr ""
+
+#: ../../exceptions.rst:4
+msgid "Rendering Exceptions through the Flask Handler"
+msgstr ""
+
+#: ../../exceptions.rst:5
+msgid ""
+"Flask by default contains an exception handler, which connexion's app can"
+" proxy to with the ``add_error_handler`` method. You can hook either on "
+"status codes or on a specific exception type."
+msgstr ""
+
+#: ../../exceptions.rst:9
+msgid ""
+"Connexion is moving from returning flask responses on errors to throwing "
+"exceptions that are a subclass of ``connexion.problem``. So far "
+"exceptions thrown in the OAuth decorator have been converted."
+msgstr ""
+
+#: ../../exceptions.rst:14
+msgid "Default Exception Handling"
+msgstr ""
+
+#: ../../exceptions.rst:15
+msgid ""
+"By default connexion exceptions are JSON serialized according to `Problem"
+" Details for HTTP APIs`_"
+msgstr ""
+
+#: ../../exceptions.rst:18
+msgid ""
+"Application can return errors using ``connexion.problem`` or exceptions "
+"that inherit from both ``connexion.ProblemException`` and a "
+"``werkzeug.exceptions.HttpException`` subclass (for example "
+"``werkzeug.exceptions.Forbidden``). An example of this is the "
+"``connexion.exceptions.OAuthProblem`` exception"
+msgstr ""
+
+#: ../../exceptions.rst:32
+msgid "Examples of Custom Rendering Exceptions"
+msgstr ""
+
+#: ../../exceptions.rst:33
+msgid ""
+"To custom render an exception when you boot your connexion application "
+"you can hook into a custom exception and render it in some sort of custom"
+" format. For example"
+msgstr ""
+
+#: ../../exceptions.rst:49
+msgid "Custom Exceptions"
+msgstr ""
+
+#: ../../exceptions.rst:50
+msgid ""
+"There are several exception types in connexion that contain extra "
+"information to help you render appropriate messages to your user beyond "
+"the default description and status code:"
+msgstr ""
+
+#: ../../exceptions.rst:54
+msgid "OAuthProblem"
+msgstr ""
+
+#: ../../exceptions.rst:55
+msgid ""
+"This exception is thrown when there is some sort of validation issue with"
+" the Authorisation Header"
+msgstr ""
+
+#: ../../exceptions.rst:58
+msgid "OAuthResponseProblem"
+msgstr ""
+
+#: ../../exceptions.rst:59
+msgid ""
+"This exception is thrown when there is a validation issue from your OAuth"
+" 2 Server. It contains a ``token_response`` property which contains the "
+"full http response from the OAuth 2 Server"
+msgstr ""
+
+#: ../../exceptions.rst:63
+msgid "OAuthScopeProblem"
+msgstr ""
+
+#: ../../exceptions.rst:64
+msgid ""
+"This scope indicates the OAuth 2 Server did not generate a token with all"
+" the scopes required. This contains 3 properties - ``required_scopes`` - "
+"The scopes that were required for this endpoint - ``token_scopes`` - The "
+"scopes that were granted for this endpoint"
+msgstr ""
+

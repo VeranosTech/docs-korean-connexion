@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Zalando SE
+# This file is distributed under the same license as the Connexion package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Connexion 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-29 15:28+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../quickstart.rst:2
+msgid "Quickstart"
+msgstr ""
+
+#: ../../quickstart.rst:6
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../quickstart.rst:8
+msgid "Python 2.7 or Python 3.4+"
+msgstr ""
+
+#: ../../quickstart.rst:11
+msgid "Installing It"
+msgstr ""
+
+#: ../../quickstart.rst:13
+msgid "In your command line, type this:"
+msgstr ""
+
+#: ../../quickstart.rst:21
+msgid "Running It"
+msgstr ""
+
+#: ../../quickstart.rst:23
+msgid ""
+"Put your API YAML inside a folder in the root path of your application "
+"(e.g ``openapi/``) and then do"
+msgstr ""
+
+#: ../../quickstart.rst:35
+msgid "Dynamic Rendering of Your Specification"
+msgstr ""
+
+#: ../../quickstart.rst:37
+msgid ""
+"Connexion uses Jinja2_ to allow specification parameterization through "
+"`arguments` parameter. You can either define specification arguments "
+"globally for the application in the `connexion.App` constructor, or for "
+"each specific API in the `connexion.App#add_api` method:"
+msgstr ""
+
+#: ../../quickstart.rst:49
+msgid ""
+"When a value is provided both globally and on the API, the API value will"
+" take precedence."
+msgstr ""
+
+#: ../../quickstart.rst:53
+msgid "The Swagger UI Console"
+msgstr ""
+
+#: ../../quickstart.rst:54
+msgid ""
+"The Swagger UI for an API is available, by default, in "
+"``{base_path}/ui/`` where ``base_path`` is the base path of the API."
+msgstr ""
+
+#: ../../quickstart.rst:57
+msgid "You can disable the Swagger UI at the application level:"
+msgstr ""
+
+#: ../../quickstart.rst:67
+msgid "You can also disable it at the API level:"
+msgstr ""
+
+#: ../../quickstart.rst:76
+msgid "Server Backend"
+msgstr ""
+
+#: ../../quickstart.rst:77
+msgid ""
+"By default connexion uses the default flask server but you can also use "
+"Tornado_ or gevent_ as the HTTP server, to do so set server to "
+"``tornado`` or ``gevent``:"
+msgstr ""
+
+#: ../../quickstart.rst:87
+msgid "Connexion has the ``aiohttp`` framework as server backend too:"
+msgstr ""
+

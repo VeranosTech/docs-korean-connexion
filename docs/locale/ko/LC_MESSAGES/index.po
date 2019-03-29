@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Zalando SE
+# This file is distributed under the same license as the Connexion package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Connexion 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-29 15:28+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../index.rst:7
+msgid "Welcome to Connexion's documentation!"
+msgstr ""
+
+#: ../../index.rst:9
+msgid ""
+"Connexion is a framework on top of Flask_ that automagically handles HTTP"
+" requests defined using `OpenAPI`_ (formerly known as Swagger), "
+"supporting both `v2.0`_ and `v3.0`_ of the specification."
+msgstr ""
+
+#: ../../index.rst:13
+msgid ""
+"Connexion allows you to write these specifications, then maps the "
+"endpoints to your Python functions. This is what makes it unique from "
+"other tools that generate the specification based on your Python code. "
+"You are free to describe your REST API with as much detail as you want "
+"and then Connexion guarantees that it will work as you specified. We "
+"built Connexion this way in order to:"
+msgstr ""
+
+#: ../../index.rst:20
+msgid "Simplify the development process"
+msgstr ""
+
+#: ../../index.rst:21
+msgid "Reduce misinterpretation about what an API is going to look like"
+msgstr ""
+
+#: ../../index.rst:23
+msgid "Contents:"
+msgstr ""
+

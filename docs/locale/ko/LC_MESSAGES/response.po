@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Zalando SE
+# This file is distributed under the same license as the Connexion package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Connexion 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-29 15:28+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../response.rst:2
+msgid "Response Handling"
+msgstr ""
+
+#: ../../response.rst:5
+msgid "Response Serialization"
+msgstr ""
+
+#: ../../response.rst:6
+msgid ""
+"If the endpoint returns a `Response` object this response will be used as"
+" is."
+msgstr ""
+
+#: ../../response.rst:8
+msgid ""
+"Otherwise, and by default and if the specification defines that an "
+"endpoint produces only JSON, connexion will automatically serialize the "
+"return value for you and set the right content type in the HTTP header."
+msgstr ""
+
+#: ../../response.rst:12
+msgid ""
+"If the endpoint produces a single non-JSON mimetype then Connexion will "
+"automatically set the right content type in the HTTP header."
+msgstr ""
+
+#: ../../response.rst:16
+msgid "Customizing JSON encoder"
+msgstr ""
+
+#: ../../response.rst:18
+msgid ""
+"Connexion allows you to customize the `JSONEncoder` class in the Flask "
+"app instance `json_encoder` (`connexion.App:app`). If you wanna reuse the"
+" Connexion's date-time serialization, inherit your custom encoder from "
+"`connexion.apps.flask_app.FlaskJSONEncoder`."
+msgstr ""
+
+#: ../../response.rst:24
+msgid "Returning status codes"
+msgstr ""
+
+#: ../../response.rst:25
+msgid "There are two ways of returning a specific status code."
+msgstr ""
+
+#: ../../response.rst:27 ../../response.rst:40
+msgid "One way is to return a `Response` object that will be used unchanged."
+msgstr ""
+
+#: ../../response.rst:29
+msgid ""
+"The other is returning it as a second return value in the response. For "
+"example"
+msgstr ""
+
+#: ../../response.rst:37
+msgid "Returning Headers"
+msgstr ""
+
+#: ../../response.rst:38
+msgid "There are two ways to return headers from your endpoints."
+msgstr ""
+
+#: ../../response.rst:42
+msgid ""
+"The other is returning a dict with the header values as the third return "
+"value in the response:"
+msgstr ""
+
+#: ../../response.rst:45
+msgid "For example"
+msgstr ""
+
+#: ../../response.rst:54
+msgid "Response Validation"
+msgstr ""
+
+#: ../../response.rst:55
+msgid ""
+"While, by default Connexion doesn't validate the responses it's possible "
+"to do so by opting in when adding the API:"
+msgstr ""
+
+#: ../../response.rst:66
+msgid ""
+"This will validate all the responses using `jsonschema` and is specially "
+"useful during development."
+msgstr ""
+
+#: ../../response.rst:71
+msgid "Custom Validator"
+msgstr ""
+
+#: ../../response.rst:73
+msgid ""
+"By default, response body contents are validated against OpenAPI schema "
+"via ``connexion.decorators.response.ResponseValidator``, if you want to "
+"change the validation, you can override the default class with:"
+msgstr ""
+
+#: ../../response.rst:87
+msgid "Error Handling"
+msgstr ""
+
+#: ../../response.rst:88
+msgid ""
+"By default connexion error messages are JSON serialized according to "
+"`Problem Details for HTTP APIs`_"
+msgstr ""
+
+#: ../../response.rst:91
+msgid "Application can return errors using ``connexion.problem``."
+msgstr ""
+

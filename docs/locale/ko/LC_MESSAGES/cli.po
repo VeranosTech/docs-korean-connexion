@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Zalando SE
+# This file is distributed under the same license as the Connexion package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Connexion 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-29 15:28+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../cli.rst:2
+msgid "Command-Line Interface"
+msgstr ""
+
+#: ../../cli.rst:3
+msgid ""
+"For convenience Connexion provides a command-line interface (CLI). This "
+"interface aims to be a starting point in developing or testing OpenAPI "
+"specifications with Connexion."
+msgstr ""
+
+#: ../../cli.rst:7
+msgid "The available commands are:"
+msgstr ""
+
+#: ../../cli.rst:9
+msgid "``connexion run``"
+msgstr ""
+
+#: ../../cli.rst:11
+msgid "All commands can run with -h or --help to list more information."
+msgstr ""
+
+#: ../../cli.rst:14
+msgid "Running an OpenAPI specification"
+msgstr ""
+
+#: ../../cli.rst:16
+msgid ""
+"The subcommand ``run`` of Connexion's CLI makes it easy to run OpenAPI "
+"specifications directly even before any operation handler function gets "
+"implemented. This allows you to verify and inspect how your API will work"
+" with Connexion."
+msgstr ""
+
+#: ../../cli.rst:21
+msgid "To run your specification, execute in your shell:"
+msgstr ""
+
+#: ../../cli.rst:27
+msgid ""
+"This command will tell Connexion to run the ``your_api.yaml`` "
+"specification file attaching a stub operation (``--stub``) to the "
+"unavailable operations/functions of your API and in debug mode "
+"(``--debug``)."
+msgstr ""
+
+#: ../../cli.rst:32
+msgid "The basic usage of this command is:"
+msgstr ""
+
+#: ../../cli.rst:38
+msgid "Where:"
+msgstr ""
+
+#: ../../cli.rst:40
+msgid "SPEC_FILE: Your OpenAPI specification file in YAML format."
+msgstr ""
+
+#: ../../cli.rst:41
+msgid ""
+"BASE_MODULE_PATH (optional): filesystem path where the API endpoints "
+"handlers are going to be imported from. In short, where your Python code "
+"is saved."
+msgstr ""
+
+#: ../../cli.rst:45
+msgid ""
+"There are more options available for the ``run`` command, for a full list"
+" run:"
+msgstr ""
+
+#: ../../cli.rst:53
+msgid "Running a mock server"
+msgstr ""
+
+#: ../../cli.rst:55
+msgid ""
+"You can run a simple server which returns example responses on every "
+"request. The example responses must be defined in the ``examples`` "
+"response property of the OpenAPI specification. Your API specification "
+"file is not required to have any ``operationId``."
+msgstr ""
+

@@ -1,0 +1,105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Zalando SE
+# This file is distributed under the same license as the Connexion package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Connexion 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-29 15:28+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../cookbook.rst:2
+msgid "Connexion Cookbook"
+msgstr ""
+
+#: ../../cookbook.rst:4
+msgid ""
+"This section aims to be a cookbook of possible solutions for specific use"
+" cases of Connexion."
+msgstr ""
+
+#: ../../cookbook.rst:8
+msgid "Custom type format"
+msgstr ""
+
+#: ../../cookbook.rst:10
+msgid ""
+"It is possible to define custom type formats that are going to be used by"
+" the Connexion payload validation on request parameters and response "
+"payloads of your API."
+msgstr ""
+
+#: ../../cookbook.rst:14
+msgid ""
+"Let's say your API deals with Products and you want to define a field "
+"`price_label` that has a \"money\" format value. You can create a format "
+"checker function and register that to be used to validate values of the "
+"\"money\" format."
+msgstr ""
+
+#: ../../cookbook.rst:19
+msgid ""
+"Example of a possible schema of Product having an attribute with "
+"\"money\" format that would be defined in your OpenAPI specification:"
+msgstr ""
+
+#: ../../cookbook.rst:33
+msgid "Then we create a format checker function for that type of value:"
+msgstr ""
+
+#: ../../cookbook.rst:46
+msgid ""
+"The format checker function is expected to return `True` when the value "
+"matches the expected format and return `False` when it doesn't. Also is "
+"important to verify if the type of the value you are trying to validate "
+"is compatible with the format. In our example we check if the `val` is of"
+" type \"string\" before performing any further checking."
+msgstr ""
+
+#: ../../cookbook.rst:53
+msgid ""
+"The final step to make it work is registering our `is_money` function to "
+"the format \"money\" in json_schema library. For that, we can use the "
+"draft4 format checker decorator."
+msgstr ""
+
+#: ../../cookbook.rst:65
+msgid ""
+"This is all you need to have validation for that format in your Connexion"
+" application. Keep in mind that the format checkers should be defined and"
+" registered before you run your application server. A full example can be"
+" found at "
+"https://gist.github.com/rafaelcaricio/6e67286a522f747405a7299e6843cd93"
+msgstr ""
+
+#: ../../cookbook.rst:73
+msgid "CORS Support"
+msgstr ""
+
+#: ../../cookbook.rst:75
+msgid ""
+"CORS_ (Cross-origin resource sharing) is not built into Connexion, but "
+"you can use the `flask-cors`_ library to set CORS headers:"
+msgstr ""
+
+#: ../../cookbook.rst:97
+msgid "Logging"
+msgstr ""
+
+#: ../../cookbook.rst:99
+msgid ""
+"You can customize logging accessing the `_flask-logger` directly or "
+"configuring the logger via dictConfig. Remember that you should configure"
+" logging for your project as soon as possible when the program starts or "
+"you'll get the default configuration."
+msgstr ""
+
