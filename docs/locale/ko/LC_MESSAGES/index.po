@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../index.rst:7
 msgid "Welcome to Connexion's documentation!"
-msgstr ""
+msgstr "컨넥션 문서"
 
 #: ../../index.rst:9
 msgid ""
