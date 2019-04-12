@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Connexion 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 15:28+0900\n"
-"PO-Revision-Date: 2019-04-11 16:55+0900\n"
+"PO-Revision-Date: 2019-04-11 17:08+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../../cli.rst:2
 msgid "Command-Line Interface"
-msgstr "Command-Line Interface"
+msgstr "커맨드 라인 인터페이스(CLI)"
 
 #: ../../cli.rst:3
 msgid ""
