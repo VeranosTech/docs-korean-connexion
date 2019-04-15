@@ -43,7 +43,7 @@ msgstr "``connexion run``"
 #: ../../cli.rst:11
 msgid "All commands can run with -h or --help to list more information."
 msgstr ""
-"모든 명령어는 더 많은 내용을 보기 위해 -h나 —help를 함께 사용할 수 있다."
+"모든 명령어는 더 많은 내용을 보기 위해 -h나 --help를 함께 사용할 수 있다."
 
 #: ../../cli.rst:14
 msgid "Running an OpenAPI specification"
@@ -70,8 +70,8 @@ msgid ""
 "unavailable operations/functions of your API and in debug mode (``--"
 "debug``)."
 msgstr ""
-"이 명령어는 stub 연산(—stub)을 API의 사용할 수 없는 연산/함수와 디버그 모"
-"드에 연결하는 ``your_api.yaml`` 스펙 파일을 Connexion이 실행하게 한다."
+"이 명령어는 stub 연산(--stub)을 API의 사용할 수 없는 연산/함수와 디버그 모드(``--debug``\ )에"
+" 연결하는 ``your_api.yaml`` 스펙 파일을 Connexion이 실행하게 한다."
 
 #: ../../cli.rst:32
 msgid "The basic usage of this command is:"
