@@ -3,23 +3,24 @@
 # This file is distributed under the same license as the Connexion package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Connexion 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 15:28+0900\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2019-04-11 17:08+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ko\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: ../../cli.rst:2
 msgid "Command-Line Interface"
-msgstr ""
+msgstr "커맨드 라인 인터페이스(CLI)"
 
 #: ../../cli.rst:3
 msgid ""
@@ -27,54 +28,62 @@ msgid ""
 "interface aims to be a starting point in developing or testing OpenAPI "
 "specifications with Connexion."
 msgstr ""
+"편리하게 사용하기 위해 Connexion은 커맨드 라인 인터페이스 (CLI)를 제공한"
+"다. 이 인터페이스는 Connexion을 통해 OpenAPI를 개발하거나 테스트할 때 시"
+"작점이 되는 것을 목표로 한다."
 
 #: ../../cli.rst:7
 msgid "The available commands are:"
-msgstr ""
+msgstr "사용가능한 명령어는 아래와 같다:"
 
 #: ../../cli.rst:9
 msgid "``connexion run``"
-msgstr ""
+msgstr "``connexion run``"
 
 #: ../../cli.rst:11
 msgid "All commands can run with -h or --help to list more information."
 msgstr ""
+"모든 명령어는 더 많은 내용을 보기 위해 -h나 --help를 함께 사용할 수 있다."
 
 #: ../../cli.rst:14
 msgid "Running an OpenAPI specification"
-msgstr ""
+msgstr "OpenAPI 스펙 실행하기"
 
 #: ../../cli.rst:16
 msgid ""
 "The subcommand ``run`` of Connexion's CLI makes it easy to run OpenAPI "
 "specifications directly even before any operation handler function gets "
-"implemented. This allows you to verify and inspect how your API will work"
-" with Connexion."
+"implemented. This allows you to verify and inspect how your API will "
+"work with Connexion."
 msgstr ""
+"Connexion CLI의 ``run`` 보조명령어는 OpenAPI 스펙을 직접적으로 실행하는 "
+"것을 쉽게 할 수 있게 해준다. "
 
 #: ../../cli.rst:21
 msgid "To run your specification, execute in your shell:"
-msgstr ""
+msgstr "스펙을 실행하기 위해, 아래 명령어를 쉘에서 실행해라."
 
 #: ../../cli.rst:27
 msgid ""
 "This command will tell Connexion to run the ``your_api.yaml`` "
 "specification file attaching a stub operation (``--stub``) to the "
-"unavailable operations/functions of your API and in debug mode "
-"(``--debug``)."
+"unavailable operations/functions of your API and in debug mode (``--"
+"debug``)."
 msgstr ""
+"이 명령어는 stub 연산(--stub)을 API의 사용할 수 없는 연산/함수와 디버그 모드(``--debug``\ )에"
+" 연결하는 ``your_api.yaml`` 스펙 파일을 Connexion이 실행하게 한다."
 
 #: ../../cli.rst:32
 msgid "The basic usage of this command is:"
-msgstr ""
+msgstr "이 명령의 기본적인 사용은 아래와 같다:"
 
 #: ../../cli.rst:38
 msgid "Where:"
-msgstr ""
+msgstr "Where:"
 
 #: ../../cli.rst:40
 msgid "SPEC_FILE: Your OpenAPI specification file in YAML format."
-msgstr ""
+msgstr "SPEC_FILE: YAML 포맷으로 된 OpenAPI 스펙 파일."
 
 #: ../../cli.rst:41
 msgid ""
@@ -82,16 +91,20 @@ msgid ""
 "handlers are going to be imported from. In short, where your Python code "
 "is saved."
 msgstr ""
+"BASE_MODULE_PATH (옵션): API 엔드포인트 핸들러가 임포트되는 파일시스템 경"
+"로. 즉, 파이썬 코드가 저장되는 곳."
 
 #: ../../cli.rst:45
 msgid ""
-"There are more options available for the ``run`` command, for a full list"
-" run:"
+"There are more options available for the ``run`` command, for a full "
+"list run:"
 msgstr ""
+"``run`` 명령에서 사용할 수 있는 더 많은 옵션이 있다. 전체 리스트를 보려"
+"면 아래 명령어를 실행해라:"
 
 #: ../../cli.rst:53
 msgid "Running a mock server"
-msgstr ""
+msgstr "모의 서버 실행하기"
 
 #: ../../cli.rst:55
 msgid ""
@@ -100,4 +113,6 @@ msgid ""
 "response property of the OpenAPI specification. Your API specification "
 "file is not required to have any ``operationId``."
 msgstr ""
-
+"모든 요청에 대한 예제 응답을 반환하는 간단한 서버를 실행할 수 있다. 예제 "
+"응답은 OpenAPI 스펙의 ``examples`` 응답 속성에 정의돼야 한다. 이 API 스"
+"펙 파일은 ``operationId``\\ 가 필요하지 않다."

@@ -3,91 +3,110 @@
 # This file is distributed under the same license as the Connexion package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Connexion 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 15:28+0900\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2019-04-14 16:24+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ko\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: ../../routing.rst:2
 msgid "Routing"
-msgstr ""
+msgstr "라우팅"
 
 #: ../../routing.rst:5
 msgid "Endpoint Routing to Your Python Views"
-msgstr ""
+msgstr "파이썬 View에 대한 엔드포인트 라우팅"
 
 #: ../../routing.rst:7
 msgid ""
 "Connexion uses the ``operationId`` from each `Operation Object`_ to "
 "identify which Python function should handle each URL."
 msgstr ""
+"Connexion은 각 URL이 어떤 파이썬 함수를 처리하는지 알기 위해 `Operation "
+"Object`_\\ 의 ``operationId``\\ 를 사용한다."
 
 #: ../../routing.rst:10
 msgid "**Explicit Routing**:"
-msgstr ""
+msgstr "**명시적 라우팅**:"
 
 #: ../../routing.rst:19
 msgid ""
-"If you provided this path in your specification POST requests to "
-"``http://MYHOST/hello_world``, it would be handled by the function "
-"``hello_world`` in ``myapp.api`` module. Optionally, you can include ``x"
-"-swagger-router-controller`` in your operation definition, making "
-"``operationId`` relative:"
+"If you provided this path in your specification POST requests to ``http://"
+"MYHOST/hello_world``, it would be handled by the function ``hello_world`` "
+"in ``myapp.api`` module. Optionally, you can include ``x-swagger-router-"
+"controller`` in your operation definition, making ``operationId`` relative:"
 msgstr ""
+"이 경로를 ``http://MYHOST/hello_world`` 스펙의 POST 요청에 적어주면, "
+"``myapp.api`` 모듈의 ``hello_world`` 함수에 의해 처리된다. 추가적으로, ``x-"
+"swagger-router-controller``\\ 를 작동 정의에 포함시켜 ``operationId``\\ 를 "
+"상대경로로 만들 수 있다:"
 
 #: ../../routing.rst:33
 msgid ""
-"Keep in mind that Connexion follows how `HTTP methods work in Flask`_ and"
-" therefore HEAD requests will be handled by the ``operationId`` specified"
-" under GET in the specification. If both methods are supported, "
-"``connexion.request.method`` can be used to determine which request was "
-"made."
+"Keep in mind that Connexion follows how `HTTP methods work in Flask`_ and "
+"therefore HEAD requests will be handled by the ``operationId`` specified "
+"under GET in the specification. If both methods are supported, ``connexion."
+"request.method`` can be used to determine which request was made."
 msgstr ""
+"Connexion이 `HTTP methods work in Flask`_\\ 에 따라 작동하는 것을 잊지 말아"
+"라. 따라서 HEAD 요청은 스펙의 GET에서 지정된 ``operationId``\\ 에 의해 처리"
+"된다. 만약 두 방식 모두 지원한다면 어떤 요청이 만들어질지 ``connexion."
+"request.method``\\ 가 결정할 수 있다."
 
 #: ../../routing.rst:39
 msgid "Automatic Routing"
-msgstr ""
+msgstr "자동 라우팅"
 
 #: ../../routing.rst:41
 msgid ""
-"To customize this behavior, Connexion can use alternative "
-"``Resolvers``—for example, ``RestyResolver``. The ``RestyResolver`` will "
-"compose an ``operationId`` based on the path and HTTP method of the "
-"endpoints in your specification:"
+"To customize this behavior, Connexion can use alternative ``Resolvers``—for "
+"example, ``RestyResolver``. The ``RestyResolver`` will compose an "
+"``operationId`` based on the path and HTTP method of the endpoints in your "
+"specification:"
 msgstr ""
+"이 동작을 사용자 지정하려면, Connexion은 ``Resolvers``\\ (예를 들어, "
+"``RestyResolver``\\ )를 사용할 수 있다. ``RestyResolver``\\ 는 스펙의 엔드포"
+"인트 경로와 HTTP 메서드를 기반으로 ``operationId``\\ 를 구성한다:"
 
 #: ../../routing.rst:75
 msgid ""
-"``RestyResolver`` will give precedence to any ``operationId`` encountered"
-" in the specification. It will also respect ``x-swagger-router-"
-"controller``. You may import and extend ``connexion.resolver.Resolver`` "
-"to implement your own ``operationId`` (and function) resolution "
-"algorithm."
+"``RestyResolver`` will give precedence to any ``operationId`` encountered "
+"in the specification. It will also respect ``x-swagger-router-controller``. "
+"You may import and extend ``connexion.resolver.Resolver`` to implement your "
+"own ``operationId`` (and function) resolution algorithm."
 msgstr ""
+"``RestyResolver``\\ 는 스펙에서 만나는 모든 ``operationId``\\ 에 우선순위를 "
+"부여한다. ``x-swagger-router-controller`` 규칙도 지킨다. ``connexion."
+"resolver.Resolver``\\ 를 임포트하고 확장해서 사용자 고유의 ``operationId``"
+"\\ (와 함수) 해석 알고리즘을 구현할 수 있다."
 
 #: ../../routing.rst:82
 msgid "Automatic Routing with MethodViewResolver"
-msgstr ""
+msgstr "MethodViewResolver를 이용한 자동 라우팅"
 
 #: ../../routing.rst:84
 msgid ""
-"``MethodViewResolver`` is an customised Resolver based on "
-"``RestyResolver`` to take advantage of MethodView structure of building "
-"Flask APIs. The ``MethodViewResolver`` will compose an ``operationId`` "
-"based on the path and HTTP method of the endpoints in your specification."
-" The path will be based on the path you provide in the app.add_api and "
-"the path provided in the URL endpoint (specified in the swagger or "
-"openapi3)."
+"``MethodViewResolver`` is an customised Resolver based on ``RestyResolver`` "
+"to take advantage of MethodView structure of building Flask APIs. The "
+"``MethodViewResolver`` will compose an ``operationId`` based on the path "
+"and HTTP method of the endpoints in your specification. The path will be "
+"based on the path you provide in the app.add_api and the path provided in "
+"the URL endpoint (specified in the swagger or openapi3)."
 msgstr ""
+"``MethodViewResolver``\\ 는 Flask API를 빌드하는 MethodView 구조를 활용하기 "
+"위해 ``RestyResolver``\\ 를 기반으로 한 사용자화 된 Resolver다. "
+"``MethodViewResolver``\\ 는 스펙의 엔드포인드에 대한 경로와 HTTP 메서드를 기"
+"반으로 ``operationId``\\ 를 구성한다. 경로는 app.add_api에 제공한 경로와 "
+"URL 엔드포인드(swagger나 openapi3에 지정된)에 제공한 경로를 기반으로 한다."
 
 #: ../../routing.rst:96
 msgid "And associated YAML"
@@ -95,9 +114,9 @@ msgstr ""
 
 #: ../../routing.rst:118
 msgid ""
-"The structure expects a Class to exists inside the directory ``api`` that"
-" conforms to the naming ``<<Classname with Capitalised name>>View``. In "
-"the above yaml the necessary MethodView implementation is as follows:"
+"The structure expects a Class to exists inside the directory ``api`` that "
+"conforms to the naming ``<<Classname with Capitalised name>>View``. In the "
+"above yaml the necessary MethodView implementation is as follows:"
 msgstr ""
 
 #: ../../routing.rst:178
@@ -107,10 +126,10 @@ msgstr ""
 #: ../../routing.rst:184
 msgid ""
 "``MethodViewResolver`` will give precedence to any ``operationId`` "
-"encountered in the specification. It will also respect ``x-swagger-"
-"router-controller``. You may import and extend "
-"``connexion.resolver.MethodViewResolver`` to implement your own "
-"``operationId`` (and function) resolution algorithm."
+"encountered in the specification. It will also respect ``x-swagger-router-"
+"controller``. You may import and extend ``connexion.resolver."
+"MethodViewResolver`` to implement your own ``operationId`` (and function) "
+"resolution algorithm."
 msgstr ""
 
 #: ../../routing.rst:191
@@ -122,14 +141,14 @@ msgid ""
 "The names of query and form parameters, as well as the name of the body "
 "parameter are sanitized by removing characters that are not allowed in "
 "Python symbols. I.e. all characters that are not letters, digits or the "
-"underscore are removed, and finally characters are removed from the front"
-" until a letter or an under-score is encountered. As an example:"
+"underscore are removed, and finally characters are removed from the front "
+"until a letter or an under-score is encountered. As an example:"
 msgstr ""
 
 #: ../../routing.rst:204
 msgid ""
-"Without this sanitation it would e.g. be impossible to implement an "
-"`OData <http://www.odata.org>`_ API."
+"Without this sanitation it would e.g. be impossible to implement an `OData "
+"<http://www.odata.org>`_ API."
 msgstr ""
 
 #: ../../routing.rst:209
@@ -138,35 +157,34 @@ msgstr ""
 
 #: ../../routing.rst:211
 msgid ""
-"Connexion supports Flask's ``int``, ``float``, and ``path`` route "
-"parameter `variable converters "
-"<http://flask.pocoo.org/docs/0.12/quickstart/#variable-rules>`_. Specify "
-"a route parameter's type as ``integer`` or ``number`` or its type as "
-"``string`` and its format as ``path`` to use these converters. For "
-"example:"
+"Connexion supports Flask's ``int``, ``float``, and ``path`` route parameter "
+"`variable converters <http://flask.pocoo.org/docs/0.12/quickstart/#variable-"
+"rules>`_. Specify a route parameter's type as ``integer`` or ``number`` or "
+"its type as ``string`` and its format as ``path`` to use these converters. "
+"For example:"
 msgstr ""
 
 #: ../../routing.rst:229
 msgid ""
-"will create an equivalent Flask route ``/greeting/<path:name>``, allowing"
-" requests to include forward slashes in the ``name`` url variable."
+"will create an equivalent Flask route ``/greeting/<path:name>``, allowing "
+"requests to include forward slashes in the ``name`` url variable."
 msgstr ""
 
 #: ../../routing.rst:233
 msgid "API Versioning and basePath"
-msgstr ""
+msgstr "API 버전과 기본경로"
 
 #: ../../routing.rst:235
 msgid ""
-"Setting a base path is useful for versioned APIs. An example of a base "
-"path would be the ``1.0`` in ``http://MYHOST/1.0/hello_world``."
+"Setting a base path is useful for versioned APIs. An example of a base path "
+"would be the ``1.0`` in ``http://MYHOST/1.0/hello_world``."
 msgstr ""
 
 #: ../../routing.rst:238
 msgid ""
-"If you are using OpenAPI 3.x.x, you set your base URL path in the servers"
-" block of the specification. You can either specify a full URL, or just a"
-" relative path."
+"If you are using OpenAPI 3.x.x, you set your base URL path in the servers "
+"block of the specification. You can either specify a full URL, or just a "
+"relative path."
 msgstr ""
 
 #: ../../routing.rst:253
@@ -177,18 +195,18 @@ msgstr ""
 
 #: ../../routing.rst:263
 msgid ""
-"If you don't want to include the base path in your specification, you can"
-" provide it when adding the API to your application:"
+"If you don't want to include the base path in your specification, you can "
+"provide it when adding the API to your application:"
 msgstr ""
 
 #: ../../routing.rst:271
 msgid "Swagger JSON"
-msgstr ""
+msgstr "Swagger JSON"
 
 #: ../../routing.rst:272
 msgid ""
-"Connexion makes the OpenAPI/Swagger specification in JSON format "
-"available from ``swagger.json`` in the base path of the API."
+"Connexion makes the OpenAPI/Swagger specification in JSON format available "
+"from ``swagger.json`` in the base path of the API."
 msgstr ""
 
 #: ../../routing.rst:275
@@ -198,4 +216,3 @@ msgstr ""
 #: ../../routing.rst:283
 msgid "You can also disable it at the API level:"
 msgstr ""
-
