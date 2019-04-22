@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Connexion 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 15:28+0900\n"
-"PO-Revision-Date: 2019-04-14 16:24+0900\n"
+"PO-Revision-Date: 2019-04-19 13:17+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -110,7 +110,7 @@ msgstr ""
 
 #: ../../routing.rst:96
 msgid "And associated YAML"
-msgstr ""
+msgstr "YAML 파일은 아래와 같다"
 
 #: ../../routing.rst:118
 msgid ""
@@ -118,10 +118,13 @@ msgid ""
 "conforms to the naming ``<<Classname with Capitalised name>>View``. In the "
 "above yaml the necessary MethodView implementation is as follows:"
 msgstr ""
+"이 구조는 ``<<Classname with Capitalised name>>View`` 네이밍을 따르는 "
+"``api`` 디렉토리 안에 클래스가 있길 기대한다. 위 yaml에서 필요한 MethodView "
+"구현은 아래와 같다:"
 
 #: ../../routing.rst:178
 msgid "and a __init__.py file to make the Class visible in the api directory."
-msgstr ""
+msgstr "그리고 클래스를 만드는 ``__init__.py`` 파일 "
 
 #: ../../routing.rst:184
 msgid ""
