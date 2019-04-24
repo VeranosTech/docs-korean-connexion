@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Connexion 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 15:28+0900\n"
-"PO-Revision-Date: 2019-04-19 13:17+0900\n"
+"PO-Revision-Date: 2019-04-24 13:36+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: ../../routing.rst:178
 msgid "and a __init__.py file to make the Class visible in the api directory."
-msgstr "그리고 클래스를 만드는 ``__init__.py`` 파일 "
+msgstr "그리고 클래스가 api 디렉토리에 보이게 하는 ``__init__.py`` 파일이다."
 
 #: ../../routing.rst:184
 msgid ""
@@ -134,10 +134,14 @@ msgid ""
 "MethodViewResolver`` to implement your own ``operationId`` (and function) "
 "resolution algorithm."
 msgstr ""
+"``MethodViewResolver``\\ 는 스펙에서 만난 모든 ``operationId``\\ 에 우선순위"
+"를 부여한다. ``x-swagger-router-controller``\\ 도 존중한다. ``connexion."
+"resolver.MethodViewResolver``\\ 를 임포트하고 확장해 사용자만의 "
+"``operationId``\\ (및 함수) 분석 알고리즘을 구현할 수 있다."
 
 #: ../../routing.rst:191
 msgid "Parameter Name Sanitation"
-msgstr ""
+msgstr "파라미터 이름 정제"
 
 #: ../../routing.rst:193
 msgid ""
@@ -147,16 +151,22 @@ msgid ""
 "underscore are removed, and finally characters are removed from the front "
 "until a letter or an under-score is encountered. As an example:"
 msgstr ""
+"쿼리 및 폼 파라미터의 이름과 본문 파라미터의 이름은 파이썬 기호에서 허용되"
+"지 않는 문자를 제거해 정제된다. 즉, 문자, 숫자, 및줄이 아닌 모든 문자는 제거"
+"되고, 마지막으로 맨 앞에 문자나 언더스코어가 나타날 때까지 앞에서부터 문자"
+"를 제거한다. 예:"
 
 #: ../../routing.rst:204
 msgid ""
 "Without this sanitation it would e.g. be impossible to implement an `OData "
 "<http://www.odata.org>`_ API."
 msgstr ""
+"이런 정제 작업 없으면 `OData <http://www.odata.org>`_ API와 같은 예는 구현"
+"할 수 없다."
 
 #: ../../routing.rst:209
 msgid "Parameter Variable Converters"
-msgstr ""
+msgstr "파라미터 변수 변환"
 
 #: ../../routing.rst:211
 msgid ""
@@ -166,22 +176,31 @@ msgid ""
 "its type as ``string`` and its format as ``path`` to use these converters. "
 "For example:"
 msgstr ""
+"Connexion은 Flask의 ``int``, ``float``, ``path`` 라우트 파라미터 `variable "
+"converters <http://flask.pocoo.org/docs/0.12/quickstart/#variable-rules>`_"
+"\\ 를 지원한다. 라우트 파라미터의 타입을 ``integer``\\ 나 ``number``\\ 로 지"
+"정하거나 타입을 문자열로 지정하고 포맷을 이 변환기를 사용할 ``path``\\ 로 지"
+"정해라. 예:"
 
 #: ../../routing.rst:229
 msgid ""
 "will create an equivalent Flask route ``/greeting/<path:name>``, allowing "
 "requests to include forward slashes in the ``name`` url variable."
 msgstr ""
+"위 스펙은 동등한 Flask 경로 ``/greeting/<path:name>``\\ 를 생성해, 요청 시 "
+"``name`` url 변수 안에 슬래시(\\ ``/``\\ )를 포함할 수 있다."
 
 #: ../../routing.rst:233
 msgid "API Versioning and basePath"
-msgstr "API 버전과 기본경로"
+msgstr "API 버전과 기본경로(basePath)"
 
 #: ../../routing.rst:235
 msgid ""
 "Setting a base path is useful for versioned APIs. An example of a base path "
 "would be the ``1.0`` in ``http://MYHOST/1.0/hello_world``."
 msgstr ""
+"기본 경로(base path)를 설정하는 것은 버전이 있는 API에 유용하다. 기본 경로"
+"의 예는 ``http://MYHOST/1.0/hello_world``\\ 에서 ``1.0``\\ 이다."
 
 #: ../../routing.rst:238
 msgid ""
@@ -189,18 +208,24 @@ msgid ""
 "block of the specification. You can either specify a full URL, or just a "
 "relative path."
 msgstr ""
+"OpenAPI 3.x.x을 쓴다면, 스펙의 ``servers`` 블록에 기본 URL 경로를 설정해라. "
+"전체 URL이나 상대 경로를 지정할 수 있다."
 
 #: ../../routing.rst:253
 msgid ""
 "If you are using OpenAPI 2.0, you can define a ``basePath`` on the top "
 "level of your OpenAPI 2.0 specification."
 msgstr ""
+"OpenAPI 2.0을 쓴다면, OpenAPI 2.0 스펙의 최상위 레벨에 ``basePath``\\ 를 정"
+"의할 수 있다."
 
 #: ../../routing.rst:263
 msgid ""
 "If you don't want to include the base path in your specification, you can "
 "provide it when adding the API to your application:"
 msgstr ""
+"기본 경로(base path)를 스펙에 넣지 않고 싶으면 API를 어플리케이션에 추가할 "
+"때 제공할 수 있다:"
 
 #: ../../routing.rst:271
 msgid "Swagger JSON"
@@ -211,11 +236,13 @@ msgid ""
 "Connexion makes the OpenAPI/Swagger specification in JSON format available "
 "from ``swagger.json`` in the base path of the API."
 msgstr ""
+"Connexion은 JSON 형식의 OpenAPI/Swagger 스펙을 API의 기본 경로의 ``swagger."
+"json``\\ 에서 사용할 수 있게 한다."
 
 #: ../../routing.rst:275
 msgid "You can disable the Swagger JSON at the application level:"
-msgstr ""
+msgstr "Swagger JSON을 어플리케이션 레벨에서 사용할 수 없게 할 수 있다:"
 
 #: ../../routing.rst:283
 msgid "You can also disable it at the API level:"
-msgstr ""
+msgstr "API 레벨에서 사용할 수 없게 할 수도 있다:"
