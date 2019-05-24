@@ -276,7 +276,7 @@ msgstr ""
 "이 파서는 OpenAPI 3.x.x 스펙을 준수하며, ``style`` 파라미터를 사용한다. "
 "쿼리 파라미터는 왼쪽에서 오른쪽으로 파싱되므로, 쿼리 파라미터가 두번 정의"
 "된 경우 맨 오른쪽 정의가 우선 적용된다. 예를 들어, 쿼리 문자열 ``?"
-"letters=a,b,c&letters=d,e,f``\\ 과 `style: simple``\\ 이 URI에 함께 제공"
+"letters=a,b,c&letters=d,e,f``\\ 과 ``style: simple``\\ 이 URI에 함께 제공"
 "되면, connexion은 ``letters = [‘d’, ‘e’, ‘f’]``\\ 을 설정한다. 추가적인 "
 "정보는 `OpenAPI 3.0 Style Values`_\\ 를 봐라."
 
