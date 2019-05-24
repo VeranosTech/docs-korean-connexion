@@ -3,57 +3,66 @@
 # This file is distributed under the same license as the Connexion package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Connexion 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-29 15:28+0900\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2019-05-24 16:29+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ko\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: ../../request.rst:2
 msgid "Request Handling"
-msgstr ""
+msgstr "요청 핸들링"
 
 #: ../../request.rst:3
 msgid ""
 "Connexion validates incoming requests for conformance with the schemas "
 "described in swagger specification."
 msgstr ""
+"Connexion는 swagger 스펙에 설명된 스키마를 지키기 위해 들어오는 요청에 대"
+"한 유효성을 검사한다."
 
 #: ../../request.rst:6
 msgid ""
 "Request parameters will be provided to the handler functions as keyword "
 "arguments if they are included in the function's signature, otherwise "
-"body parameters can be accessed from ``connexion.request.json`` and query"
-" parameters can be accessed from ``connexion.request.args``."
+"body parameters can be accessed from ``connexion.request.json`` and "
+"query parameters can be accessed from ``connexion.request.args``."
 msgstr ""
+"요청 파라미터는 함수의 서명에 포함된 경우 키워드 인수로 핸들러 함수에 제"
+"공된다. 그렇지 않으면 본문 파라미터는 ``connexion.request.json``\\ 에서 "
+"접근할 수 있으며, 쿼리 파라미터는 ``connexion.request.args``\\ 에서 접근"
+"할 수 있다."
 
 #: ../../request.rst:12
 msgid "Request Validation"
-msgstr ""
+msgstr "요청에 대한 유효성 검사"
 
 #: ../../request.rst:13
 msgid ""
 "Both the request body and parameters are validated against the "
 "specification, using `jsonschema`_."
 msgstr ""
+"요청 본문과 파라미터는 모두 `jsonschema`_\\ 를 사용해 스펙에 대해 유효성"
+"이 검사된다."
 
 #: ../../request.rst:16
 msgid ""
 "If the request doesn't match the specification connexion will return a "
 "400 error."
-msgstr ""
+msgstr "요청이 스펙과 일치하지 않으면 connexion은 400 에러를 반환한다."
 
 #: ../../request.rst:20
 msgid "Automatic Parameter Handling"
-msgstr ""
+msgstr "자동 파라미터 핸들링"
 
 #: ../../request.rst:21
 msgid ""
@@ -62,33 +71,41 @@ msgid ""
 "with value casting whenever possible. All you need to do is define the "
 "endpoint's parameters with matching names with your views arguments."
 msgstr ""
+"Connexion은 엔드포인트 스펙에 정의된 파라미터를, 명명된 파라미터로 파이"
+"썬 뷰의 인수에 자동으로 매핑하며, 가능할 때마다 값 캐스팅이 이뤄진다."
 
 #: ../../request.rst:26
 msgid "As example you have an endpoint specified as:"
-msgstr ""
+msgstr "엔드포인트 스펙의 예:"
 
 #: ../../request.rst:41
 msgid "And the view function:"
-msgstr ""
+msgstr "그리고 뷰 함수다:"
 
 #: ../../request.rst:51
 msgid ""
 "In this example Connexion will automatically identify that your view "
-"function expects an argument named `message` and will assign the value of"
-" the endpoint parameter `message` to your view function."
+"function expects an argument named `message` and will assign the value "
+"of the endpoint parameter `message` to your view function."
 msgstr ""
+"이 예제에서 Connexion은 뷰 함수가 `message`\\ 라는 인수를 받는 것을 자동"
+"으로 인식하고, 엔드포인트 파라미터 `message`\\ 의 값을 뷰 함수에 할당한"
+"다."
 
 #: ../../request.rst:55
 msgid "Connexion will also use default values if they are provided."
-msgstr ""
+msgstr "Connexion은 디폴트 값을 제공하면 그것을 사용한다."
 
 #: ../../request.rst:57
 msgid ""
 "In the OpenAPI 3.x.x spec, the requestBody does not have a name. By "
-"default it will be passed in as 'body'. You can optionally provide the x"
-"-body-name parameter in your requestBody schema to override the name of "
+"default it will be passed in as 'body'. You can optionally provide the x-"
+"body-name parameter in your requestBody schema to override the name of "
 "the parameter that will be passed to your handler function."
 msgstr ""
+"OpenAPI 3.x.x 스펙에서는, requestBody는 이름이 없다. 기본적으로 ‘body’로 "
+"전달된다. 옵션으로, 핸들러 함수에 전달되는 파라미터의 이름을 오버라이드 "
+"하기 위해 requestBody 스키마에 x-body-name 파라미터를 제공할 수 있다."
 
 #: ../../request.rst:63
 msgid ""
@@ -97,81 +114,86 @@ msgid ""
 "call this endpoint WITHOUT the parameter you will get an exception of "
 "missing positional argument."
 msgstr ""
+"엗드포인트에 필수가 *아닌* 파라미터가 있고, 파이썬 뷰에 명시되지 않은 인"
+"수가 있을 때, 파라미터 없이 이 엔드포인트를 호출하면 위치 인수가 없는 것"
+"에 대한 에러가 발생할 것이다."
 
 #: ../../request.rst:70
 msgid "Type casting"
-msgstr ""
+msgstr "타입 변환"
 
 #: ../../request.rst:71
 msgid ""
-"Whenever possible Connexion will try to parse your argument values and do"
-" type casting to related Python natives values. The current available "
+"Whenever possible Connexion will try to parse your argument values and "
+"do type casting to related Python natives values. The current available "
 "type castings are:"
 msgstr ""
+"가능할 때 Connexion은 인수 값을 파싱하며, 관련된 파이썬 값으로 타입 변환"
+"(casting)이 이뤄진다. 현재 사용 가능한 타입 변환이다.:"
 
 #: ../../request.rst:76
 msgid "OpenAPI Type"
-msgstr ""
+msgstr "OpenAPI 타입"
 
 #: ../../request.rst:76
 msgid "Python Type"
-msgstr ""
+msgstr "Python 타입"
 
 #: ../../request.rst:79
 msgid "integer"
-msgstr ""
+msgstr "integer"
 
 #: ../../request.rst:79
 msgid "int"
-msgstr ""
+msgstr "int"
 
 #: ../../request.rst:81
 msgid "string"
-msgstr ""
+msgstr "string"
 
 #: ../../request.rst:81
 msgid "str"
-msgstr ""
+msgstr "str"
 
 #: ../../request.rst:83
 msgid "number"
-msgstr ""
+msgstr "number"
 
 #: ../../request.rst:83
 msgid "float"
-msgstr ""
+msgstr "float"
 
 #: ../../request.rst:85
 msgid "boolean"
-msgstr ""
+msgstr "boolean"
 
 #: ../../request.rst:85
 msgid "bool"
-msgstr ""
+msgstr "bool"
 
 #: ../../request.rst:87
 msgid "array"
-msgstr ""
+msgstr "array"
 
 #: ../../request.rst:87
 msgid "list"
-msgstr ""
+msgstr "list"
 
 #: ../../request.rst:89
 msgid "null"
-msgstr ""
+msgstr "null"
 
 #: ../../request.rst:89
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: ../../request.rst:91
 msgid "object"
-msgstr ""
+msgstr "object"
 
 #: ../../request.rst:91
 msgid "dict"
-msgstr ""
+msgstr "dict"
 
 #: ../../request.rst:94
 msgid ""
@@ -180,79 +202,108 @@ msgid ""
 "currently supports collection formats \"pipes\" and \"csv\". The default "
 "format is \"csv\"."
 msgstr ""
+"OpenAPI 2.0 스펙에서, `array` 타입을 사용하면, 입력값을 비 직렬화"
+"(deserialize) 하는데 사용되는 `collectionFormat`\\ 을 정의할 수 있다. "
+"Connexion은 현재 collection 포맷인 “pipe”와 “csv”를 지원한다. 기본 포맷"
+"은 “csv”다."
 
 #: ../../request.rst:98
 msgid ""
 "For more details about `collectionFormat`s please check the official "
 "`OpenAPI 2.0 Specification`_."
 msgstr ""
+"`collectionFormat`\\ 에 대한 자세한 내용을 보고싶으면 공식 `OpenAPI 2.0 "
+"Specification`_\\ 를 확인해라."
 
 #: ../../request.rst:102
 msgid ""
 "In the `OpenAPI 2.0 Specification`_ if you use the ``array`` type, you "
 "can define the ``collectionFormat`` do set the deserialization behavior. "
-"Connexion currently supports \"pipes\" and \"csv\" as collection formats."
-" The default format is \"csv\"."
+"Connexion currently supports \"pipes\" and \"csv\" as collection "
+"formats. The default format is \"csv\"."
 msgstr ""
+"`OpenAPI 2.0 Specification`_\\ 에서 ``array`` 타입을 사용하면, 비직렬화"
+"(deserialization)를 하는 ``collectionFormat``\\ 을 정의할 수 있다. "
+"Connexion은 현재 collection 포맷으로 “pipes”와 “csv”을 지원한다. 기본 포"
+"맷은 “csv”다."
 
 #: ../../request.rst:107
 msgid ""
-"Connexion is opinionated about how the URI is parsed for ``array`` types."
-" The default behavior for query parameters that have been defined "
+"Connexion is opinionated about how the URI is parsed for ``array`` "
+"types. The default behavior for query parameters that have been defined "
 "multiple times is to join them all together. For example, if you provide "
 "a URI with the the query string ``?letters=a,b,c&letters=d,e,f``, "
 "connexion will set ``letters = ['a', 'b', 'c', 'd', 'e', 'f']``."
 msgstr ""
+"Connexion은 URI가 ``array`` 타입을 어떻게 파싱할지에 대해 논의 중이다. 여"
+"러 번 정의된 쿼리 파라미터에 대한 기본 동작은 모든 것을 합치는 것이다. 예"
+"를 들어, URI와 쿼리 문자열 ``?letters=a,b,c&letters=d,e,f``\\ 을 보내면, "
+"connexion은 ``letters = [‘a’, ‘b’, ‘c’, ‘d’, ‘e’, ‘f’]``\\ 로 설정한다."
 
 #: ../../request.rst:113
 msgid ""
-"You can override this behavior by specifying the URI parser in the app or"
-" api options."
+"You can override this behavior by specifying the URI parser in the app "
+"or api options."
 msgstr ""
+"앱이나 api 옵션의 URI 파서를 지정해 이 동작을 오버라이드 할 수 있다."
 
 #: ../../request.rst:122
 msgid ""
 "You can implement your own URI parsing behavior by inheriting from "
 "``connextion.decorators.uri_parsing.AbstractURIParser``."
 msgstr ""
+"``connextion.decorators.uri_parsing.AbstractURIParser``\\ 에서 상속받아 "
+"사용자만의 URI 파싱 동작을 구현할 수 있다."
 
 #: ../../request.rst:125
 msgid "There are a handful of URI parsers included with connection."
-msgstr ""
+msgstr "connexion은 소수의 URI 파서를 포함하고 있다."
 
 #: ../../request.rst:128
 msgid "OpenAPIURIParser default: OpenAPI 3.0"
-msgstr ""
+msgstr "OpenAPIURIParser default: OpenAPI 3.0"
 
 #: ../../request.rst:128
 msgid ""
 "This parser adheres to the OpenAPI 3.x.x spec, and uses the ``style`` "
 "parameter. Query parameters are parsed from left to right, so if a query "
 "parameter is defined twice, then the right-most definition will take "
-"precedence. For example, if you provided a URI with the query string "
-"``?letters=a,b,c&letters=d,e,f``, and ``style: simple``, then connexion "
+"precedence. For example, if you provided a URI with the query string ``?"
+"letters=a,b,c&letters=d,e,f``, and ``style: simple``, then connexion "
 "will set ``letters = ['d', 'e', 'f']``. For additional information see "
 "`OpenAPI 3.0 Style Values`_."
 msgstr ""
+"이 파서는 OpenAPI 3.x.x 스펙을 준수하며, ``style`` 파라미터를 사용한다. "
+"쿼리 파라미터는 왼쪽에서 오른쪽으로 파싱되므로, 쿼리 파라미터가 두번 정의"
+"된 경우 맨 오른쪽 정의가 우선 적용된다. 예를 들어, 쿼리 문자열 ``?"
+"letters=a,b,c&letters=d,e,f``\\ 과 `style: simple``\\ 이 URI에 함께 제공"
+"되면, connexion은 ``letters = [‘d’, ‘e’, ‘f’]``\\ 을 설정한다. 추가적인 "
+"정보는 `OpenAPI 3.0 Style Values`_\\ 를 봐라."
 
 #: ../../request.rst:136
 msgid "Swagger2URIParser default: OpenAPI 2.0"
-msgstr ""
+msgstr "Swagger2URIParser default: OpenAPI 2.0"
 
 #: ../../request.rst:136
 msgid ""
 "This parser adheres to the Swagger 2.0 spec, and will only join together "
-"multiple instance of the same query parameter if the ``collectionFormat``"
-" is set to ``multi``. Query parameters are parsed from left to right, so "
-"if a query parameter is defined twice, then the right-most definition "
-"wins. For example, if you provided a URI with the query string "
-"``?letters=a,b,c&letters=d,e,f``, and ``collectionFormat: csv``, then "
-"connexion will set ``letters = ['d', 'e', 'f']``"
+"multiple instance of the same query parameter if the "
+"``collectionFormat`` is set to ``multi``. Query parameters are parsed "
+"from left to right, so if a query parameter is defined twice, then the "
+"right-most definition wins. For example, if you provided a URI with the "
+"query string ``?letters=a,b,c&letters=d,e,f``, and ``collectionFormat: "
+"csv``, then connexion will set ``letters = ['d', 'e', 'f']``"
 msgstr ""
+"이 파서는 Swagger 2.0 스펙을 준수하며, ``collectionFormat``\\ 이 "
+"``multi``\\ 로 설정된 경우, 동일 쿼리 파라미터의 여러 인스턴스를 결합한"
+"다. 쿼리 파라미터는 왼쪽에서 오른쪽으로 파싱되므로, 쿼리 파라미터가 두번 "
+"정의되면 가장 오른쪽에 있는 정의가 선택된다. 예를 들어, 쿼리 문자열 ``?"
+"letters=a,b,c&letters=d,e,f``\\ 와 ``collectionFormat: csv``\\ 가 URI와 "
+"함께 제공되면, connexion은 ``letters = [‘d’, ‘e’, ‘f’]``\\ 을 설정한다."
 
 #: ../../request.rst:144
 msgid "FirstValueURIParser"
-msgstr ""
+msgstr "FirstValueURIParser"
 
 #: ../../request.rst:144
 msgid ""
@@ -261,20 +312,26 @@ msgid ""
 "query string ``?letters=a,b,c&letters=d,e,f`` and ``collectionFormat: "
 "csv`` hen connexion will set ``letters = ['a', 'b', 'c']``"
 msgstr ""
+"이 파서는 첫번째 정의된 값을 우선 적용한다는 것 외에는 Swagger2URIParser"
+"와 같이 작동한다. 예를 들어, 쿼리 문자열 ``?letters=a,b,c&letters=d,e,f``"
+"\\ 와 ``collectionFormat: csv``\\ 를 URI와 함께 제공하면, connexion은 "
+"``letters = [‘a’, ‘b’, ‘c’]``\\ 을 설정한다."
 
 #: ../../request.rst:149
 msgid "AlwaysMultiURIParser"
-msgstr ""
+msgstr "AlwaysMultiURIParser"
 
 #: ../../request.rst:149
 msgid ""
-"This parser is backwards compatible with Connexion 1.x. It joins together"
-" multiple instances of the same query parameter."
+"This parser is backwards compatible with Connexion 1.x. It joins "
+"together multiple instances of the same query parameter."
 msgstr ""
+"이 파서는 Connexion 1.x과 역 호환이 가능하다. 동일한 쿼리 파라미터의 여"
+"러 인스턴스를 결합한다."
 
 #: ../../request.rst:158
 msgid "Parameter validation"
-msgstr ""
+msgstr "파라미터 유효성 검사"
 
 #: ../../request.rst:160
 msgid ""
@@ -283,10 +340,14 @@ msgid ""
 "defined in the swagger spec return a 400 error.  You can enable it when "
 "adding the API to your application:"
 msgstr ""
+"Connexion는 쿼리와 form data 파라미터에 대한 엄격한 유효성 검사를 적용할 "
+"수 있다. 이것이 활성화 되면, swagger 스펙에 정의되지 않은 파라미터를 포함"
+"한 요청은 400 에러를 반환한다. 어플리케이션에 API를 추가할 때 활성화할 "
+"수 있다:"
 
 #: ../../request.rst:171
 msgid "Nullable parameters"
-msgstr ""
+msgstr "Null이 가능한 파라미터"
 
 #: ../../request.rst:173
 msgid ""
@@ -295,6 +356,9 @@ msgid ""
 "way to serve this use case, Connexion adds the `x-nullable` vendor "
 "extension to parameter definitions. Its usage would be:"
 msgstr ""
+"종종 API는 명시적으로 `nullable parameters`_\\ 를 받아야 한다. 하지만 "
+"openAPI 스펙은 현재 공식적으로 이 방식을 지원하지 않는다. Connexion은 `x-"
+"nullable` 벤더 확장을 파라미터 정의에 추가한다. 사용법은 아래와 같다."
 
 #: ../../request.rst:188
 msgid ""
@@ -302,34 +366,44 @@ msgid ""
 "`formData`, and `path`. Nullable values are the strings `null` and "
 "`None`."
 msgstr ""
+"Connexion은 모든 파라미터 타입(\\ `body`, `query`, `formData`, `path`\\ )"
+"에 대해서 이를 지원한다. Null이 가능한 값은 문자열 `null`\\ 과 `None`\\ "
+"이다."
 
 #: ../../request.rst:191
 msgid ""
 "Be careful on nullable parameters for sensitive data where the strings "
 "\"null\" or \"None\" can be `valid values`_."
 msgstr ""
+"“null” 또는 “None” 문자열이 유효한 값일 수 있는 민감한 데이터의 nullable "
+"파라미터에 주의해라."
 
 #: ../../request.rst:194
 msgid ""
 "This extension will be removed as soon as OpenAPI/Swagger Specification "
 "provide an official way of supporting nullable values."
 msgstr ""
+"이 확장은 OpenAPI/Swagger 스펙이 공식적으로 nullable 값을 지원할 때 제거"
+"될 것이다."
 
 #: ../../request.rst:203
 msgid "Header Parameters"
-msgstr ""
+msgstr "헤더 파라미터"
 
 #: ../../request.rst:205
 msgid ""
 "Currently, header parameters are not passed to the handler functions as "
-"parameters. But they can be accessed through the underlying "
-"``connexion.request.headers`` object which aliases the "
-"``flask.request.headers`` object."
+"parameters. But they can be accessed through the underlying ``connexion."
+"request.headers`` object which aliases the ``flask.request.headers`` "
+"object."
 msgstr ""
+"현재, 헤더 파라미터는 핸들러 함수에 파라미터로 전달되지 않는다. 그러나 "
+"``flask.request.headers`` 객체의 별칭(alias)인 ``connexion.request."
+"headers`` 객체를 통해 엑세스 할 수 있다."
 
 #: ../../request.rst:215
 msgid "Custom Validators"
-msgstr ""
+msgstr "사용자 정의 검사기"
 
 #: ../../request.rst:217
 msgid ""
@@ -338,8 +412,12 @@ msgid ""
 "``connexion.decorators.validation.ParameterValidator``, if you want to "
 "change the validation, you can override the defaults with:"
 msgstr ""
+"기본적으로, 본문과 파라미터 내용은 OpenAPI 스키마에 대해 ``connexion."
+"decorators.validation.RequestBodyValidator`` 혹은 ``connexion.decorators."
+"validation.ParameterValidator``\\ 를 통해 유효성이 검사된다. 유효성을 변"
+"경하려면, 아래 방법과 같이 기본값을 오버라이드할 수 있다:"
 
 #: ../../request.rst:231
 msgid "See custom validator example in ``examples/enforcedefaults``."
 msgstr ""
-
+"사용자 정의 검사기 예제는 ``examples/enforcedefaults``\\ 에서 봐라."
