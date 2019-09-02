@@ -1,0 +1,4 @@
+cd docs
+sphinx-build -b gettext . _build/gettext
+sphinx-intl update -l ko -p _build/gettext
+cd ..
