@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Connexion Cookbook &mdash; Connexion 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="Exception Handling" href="exceptions.html" />
+    <link rel="prev" title="보안" href="security.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Connexion
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">시작하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">커맨드 라인 인터페이스(CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing.html">라우팅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">요청 핸들링</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">응답 처리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">보안</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Connexion Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#custom-type-format">Custom type format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cors-support">CORS Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Connexion</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Connexion Cookbook</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/cookbook.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="connexion-cookbook">
+<h1>Connexion Cookbook<a class="headerlink" href="#connexion-cookbook" title="제목 주소">¶</a></h1>
+<p>This section aims to be a cookbook of possible solutions for specific
+use cases of Connexion.</p>
+<div class="section" id="custom-type-format">
+<h2>Custom type format<a class="headerlink" href="#custom-type-format" title="제목 주소">¶</a></h2>
+<p>It is possible to define custom type formats that are going to be used
+by the Connexion payload validation on request parameters and response
+payloads of your API.</p>
+<p>Let's say your API deals with Products and you want to define a field
+<cite>price_label</cite> that has a &quot;money&quot; format value. You can create a format
+checker function and register that to be used to validate values of
+the &quot;money&quot; format.</p>
+<p>Example of a possible schema of Product having an attribute with
+&quot;money&quot; format that would be defined in your OpenAPI specification:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">title</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+  <span class="nt">price_label</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">money</span>
+</pre></div>
+</div>
+<p>Then we create a format checker function for that type of value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">MONEY_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;^\$\s*\d+(\.\d\d)?&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_money</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="n">MONEY_RE</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The format checker function is expected to return <cite>True</cite> when the
+value matches the expected format and return <cite>False</cite> when it
+doesn't. Also is important to verify if the type of the value you are
+trying to validate is compatible with the format. In our example we
+check if the <cite>val</cite> is of type &quot;string&quot; before performing any further
+checking.</p>
+<p>The final step to make it work is registering our <cite>is_money</cite> function
+to the format &quot;money&quot; in json_schema library. For that, we can use the
+draft4 format checker decorator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jsonschema</span> <span class="kn">import</span> <span class="n">draft4_format_checker</span>
+
+<span class="nd">@draft4_format_checker.checks</span><span class="p">(</span><span class="s1">&#39;money&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">is_money</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>This is all you need to have validation for that format in your
+Connexion application. Keep in mind that the format checkers should be
+defined and registered before you run your application server. A full
+example can be found at
+<a class="reference external" href="https://gist.github.com/rafaelcaricio/6e67286a522f747405a7299e6843cd93">https://gist.github.com/rafaelcaricio/6e67286a522f747405a7299e6843cd93</a></p>
+</div>
+<div class="section" id="cors-support">
+<h2>CORS Support<a class="headerlink" href="#cors-support" title="제목 주소">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> (Cross-origin resource sharing) is not built into Connexion, but you can use the <a class="reference external" href="https://flask-cors.readthedocs.io/">flask-cors</a> library
+to set CORS headers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">connexion</span>
+<span class="kn">from</span> <span class="nn">flask_cors</span> <span class="kn">import</span> <span class="n">CORS</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;swagger.yaml&#39;</span><span class="p">)</span>
+
+<span class="c1"># add CORS support</span>
+<span class="n">CORS</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="제목 주소">¶</a></h2>
+<p>You can customize logging accessing the <cite>_flask-logger</cite> directly
+or configuring the logger via dictConfig.
+Remember that you should configure logging for your project as soon
+as possible when the program starts or you'll get the default configuration.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">connexion</span>
+<span class="kn">from</span> <span class="nn">logging.config</span> <span class="kn">import</span> <span class="n">dictConfig</span>
+
+
+<span class="n">dictConfig</span><span class="p">({</span>
+    <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;handlers&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;syslog&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;logging.handlers.SysLogHandler&#39;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;root&#39;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s1">&#39;handlers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;syslog&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;I configured the flask logger!&quot;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;swagger.yaml&#39;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="exceptions.html" class="btn btn-neutral float-right" title="Exception Handling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="security.html" class="btn btn-neutral float-left" title="보안" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zalando SE
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

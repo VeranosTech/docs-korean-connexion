@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>라우팅 &mdash; Connexion 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="요청 핸들링" href="request.html" />
+    <link rel="prev" title="커맨드 라인 인터페이스(CLI)" href="cli.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Connexion
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">시작하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">커맨드 라인 인터페이스(CLI)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">라우팅</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#endpoint-routing-to-your-python-views">파이썬 View에 대한 엔드포인트 라우팅</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-routing">자동 라우팅</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-routing-with-methodviewresolver">MethodViewResolver를 이용한 자동 라우팅</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameter-name-sanitation">파라미터 이름 정제</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameter-variable-converters">파라미터 변수 변환</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-versioning-and-basepath">API 버전과 기본경로(basePath)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swagger-json">Swagger JSON</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">요청 핸들링</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">응답 처리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">보안</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Connexion Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Connexion</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>라우팅</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/routing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="routing">
+<h1>라우팅<a class="headerlink" href="#routing" title="제목 주소">¶</a></h1>
+<div class="section" id="endpoint-routing-to-your-python-views">
+<h2>파이썬 View에 대한 엔드포인트 라우팅<a class="headerlink" href="#endpoint-routing-to-your-python-views" title="제목 주소">¶</a></h2>
+<p>Connexion은 각 URL이 어떤 파이썬 함수를 처리하는지 알기 위해 <a class="reference external" href="https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md#operation-object">Operation Object</a>의 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>를 사용한다.</p>
+<p><strong>명시적 라우팅</strong>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">paths</span><span class="p">:</span>
+  <span class="nt">/hello_world</span><span class="p">:</span>
+    <span class="nt">post</span><span class="p">:</span>
+      <span class="nt">operationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">myapp.api.hello_world</span>
+</pre></div>
+</div>
+<p>이 경로를 <code class="docutils literal notranslate"><span class="pre">http://MYHOST/hello_world</span></code> 스펙의 POST 요청에 적어주면, <code class="docutils literal notranslate"><span class="pre">myapp.api</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">hello_world</span></code> 함수에 의해 처리된다. 추가적으로, <code class="docutils literal notranslate"><span class="pre">x-swagger-router-controller</span></code>를 작동 정의에 포함시켜 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>를 상대경로로 만들 수 있다:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">paths</span><span class="p">:</span>
+  <span class="nt">/hello_world</span><span class="p">:</span>
+    <span class="nt">post</span><span class="p">:</span>
+      <span class="nt">x-swagger-router-controller</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">myapp.api</span>
+      <span class="nt">operationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world</span>
+</pre></div>
+</div>
+<p>Connexion이 <a class="reference external" href="http://flask.pocoo.org/docs/1.0/quickstart/#http-methods">HTTP methods work in Flask</a>에 따라 작동하는 것을 잊지 말아라. 따라서 HEAD 요청은 스펙의 GET에서 지정된 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>에 의해 처리된다. 만약 두 방식 모두 지원한다면 어떤 요청이 만들어질지 <code class="docutils literal notranslate"><span class="pre">connexion.request.method</span></code>가 결정할 수 있다.</p>
+</div>
+<div class="section" id="automatic-routing">
+<h2>자동 라우팅<a class="headerlink" href="#automatic-routing" title="제목 주소">¶</a></h2>
+<p>이 동작을 사용자 지정하려면, Connexion은 <code class="docutils literal notranslate"><span class="pre">Resolvers</span></code>(예를 들어, <code class="docutils literal notranslate"><span class="pre">RestyResolver</span></code>)를 사용할 수 있다. <code class="docutils literal notranslate"><span class="pre">RestyResolver</span></code>는 스펙의 엔드포인트 경로와 HTTP 메서드를 기반으로 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>를 구성한다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">connexion.resolver</span> <span class="kn">import</span> <span class="n">RestyResolver</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;swagger.yaml&#39;</span><span class="p">,</span> <span class="n">resolver</span><span class="o">=</span><span class="n">RestyResolver</span><span class="p">(</span><span class="s1">&#39;api&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">paths</span><span class="p">:</span>
+  <span class="nt">/</span><span class="p">:</span>
+    <span class="nt">get</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.get</span>
+  <span class="nt">/foo</span><span class="p">:</span>
+    <span class="nt">get</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.foo.search</span>
+    <span class="nt">post</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.foo.post</span>
+
+  <span class="s">&#39;/foo/{id}&#39;</span><span class="p p-Indicator">:</span>
+    <span class="nt">get</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.foo.get</span>
+    <span class="nt">put</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.foo.put</span>
+    <span class="nt">copy</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.foo.copy</span>
+    <span class="nt">delete</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.foo.delete</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">RestyResolver</span></code>는 스펙에서 만나는 모든 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>에 우선순위를 부여한다. <code class="docutils literal notranslate"><span class="pre">x-swagger-router-controller</span></code> 규칙도 지킨다. <code class="docutils literal notranslate"><span class="pre">connexion.resolver.Resolver</span></code>를 임포트하고 확장해서 사용자 고유의 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>(와 함수) 해석 알고리즘을 구현할 수 있다.</p>
+</div>
+<div class="section" id="automatic-routing-with-methodviewresolver">
+<h2>MethodViewResolver를 이용한 자동 라우팅<a class="headerlink" href="#automatic-routing-with-methodviewresolver" title="제목 주소">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">MethodViewResolver</span></code>는 Flask API를 빌드하는 MethodView 구조를 활용하기 위해 <code class="docutils literal notranslate"><span class="pre">RestyResolver</span></code>를 기반으로 한 사용자화 된 Resolver다. <code class="docutils literal notranslate"><span class="pre">MethodViewResolver</span></code>는 스펙의 엔드포인드에 대한 경로와 HTTP 메서드를 기반으로 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>를 구성한다. 경로는 app.add_api에 제공한 경로와 URL 엔드포인드(swagger나 openapi3에 지정된)에 제공한 경로를 기반으로 한다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">connexion.resolver</span> <span class="kn">import</span> <span class="n">MethodViewResolver</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;swagger.yaml&#39;</span><span class="p">,</span> <span class="n">resolver</span><span class="o">=</span><span class="n">MethodViewResolver</span><span class="p">(</span><span class="s1">&#39;api&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>YAML 파일은 아래와 같다</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">paths</span><span class="p">:</span>
+  <span class="nt">/foo</span><span class="p">:</span>
+    <span class="nt">get</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.FooView.search</span>
+    <span class="nt">post</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.FooView.post</span>
+
+  <span class="s">&#39;/foo/{id}&#39;</span><span class="p p-Indicator">:</span>
+    <span class="nt">get</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.FooView.get</span>
+    <span class="nt">put</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.FooView.put</span>
+    <span class="nt">copy</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.FooView.copy</span>
+    <span class="nt">delete</span><span class="p">:</span>
+       <span class="c1"># Implied operationId: api.FooView.delete</span>
+</pre></div>
+</div>
+<p>이 구조는 <code class="docutils literal notranslate"><span class="pre">&lt;&lt;Classname</span> <span class="pre">with</span> <span class="pre">Capitalised</span> <span class="pre">name&gt;&gt;View</span></code> 네이밍을 따르는 <code class="docutils literal notranslate"><span class="pre">api</span></code> 디렉토리 안에 클래스가 있길 기대한다. 위 yaml에서 필요한 MethodView 구현은 아래와 같다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="kn">from</span> <span class="nn">connexion</span> <span class="kn">import</span> <span class="n">NoContent</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">flask.views</span> <span class="kn">import</span> <span class="n">MethodView</span>
+
+
+<span class="k">class</span> <span class="nc">PetsView</span><span class="p">(</span><span class="n">MethodView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Create Pets service</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">method_decorators</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pets</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">body</span><span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+      <span class="n">tag</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag&quot;</span><span class="p">)</span>
+      <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="p">)</span>
+      <span class="n">pet</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="n">pet</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;tag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tag</span>
+      <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+      <span class="n">pet</span><span class="p">[</span><span class="s1">&#39;last_updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="p">[</span><span class="n">pet</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">pet</span>
+      <span class="k">return</span> <span class="n">pet</span><span class="p">,</span> <span class="mi">201</span>
+
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">petId</span><span class="p">):</span>
+      <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+      <span class="n">tag</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tag&quot;</span><span class="p">)</span>
+      <span class="n">id_</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">petId</span><span class="p">)</span>
+      <span class="n">pet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">petId</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">id_</span><span class="p">})</span>
+      <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+      <span class="n">pet</span><span class="p">[</span><span class="s2">&quot;tag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tag</span>
+      <span class="n">pet</span><span class="p">[</span><span class="s1">&#39;last_updated&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="p">[</span><span class="n">id_</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="p">[</span><span class="n">id_</span><span class="p">],</span> <span class="mi">201</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">petId</span><span class="p">):</span>
+      <span class="n">id_</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">petId</span><span class="p">)</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">NoContent</span><span class="p">,</span> <span class="mi">404</span>
+      <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="p">[</span><span class="n">id_</span><span class="p">]</span>
+      <span class="k">return</span> <span class="n">NoContent</span><span class="p">,</span> <span class="mi">204</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">petId</span><span class="p">):</span>
+      <span class="n">id_</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">petId</span><span class="p">)</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">id_</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">NoContent</span><span class="p">,</span> <span class="mi">404</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="p">[</span><span class="n">id_</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+      <span class="c1"># NOTE: we need to wrap it with list for Python 3 as dict_values is not JSON serializable</span>
+      <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pets</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">:</span><span class="n">limit</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>그리고 클래스가 api 디렉토리에 보이게 하는 <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> 파일이다.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.petsview</span> <span class="kn">import</span> <span class="n">PetsView</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">MethodViewResolver</span></code>는 스펙에서 만난 모든 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>에 우선순위를 부여한다. <code class="docutils literal notranslate"><span class="pre">x-swagger-router-controller</span></code>도 존중한다. <code class="docutils literal notranslate"><span class="pre">connexion.resolver.MethodViewResolver</span></code>를 임포트하고 확장해 사용자만의 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>(및 함수) 분석 알고리즘을 구현할 수 있다.</p>
+</div>
+<div class="section" id="parameter-name-sanitation">
+<h2>파라미터 이름 정제<a class="headerlink" href="#parameter-name-sanitation" title="제목 주소">¶</a></h2>
+<p>쿼리 및 폼 파라미터의 이름과 본문 파라미터의 이름은 파이썬 기호에서 허용되지 않는 문자를 제거해 정제된다. 즉, 문자, 숫자, 및줄이 아닌 모든 문자는 제거되고, 마지막으로 맨 앞에 문자나 언더스코어가 나타날 때까지 앞에서부터 문자를 제거한다. 예:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;^[^a-zA-Z_]+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[^0-9a-zA-Z_]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;$top&#39;</span><span class="p">))</span>
+<span class="go">&#39;top&#39;</span>
+</pre></div>
+</div>
+<p>이런 정제 작업 없으면 <a class="reference external" href="http://www.odata.org">OData</a> API와 같은 예는 구현할 수 없다.</p>
+</div>
+<div class="section" id="parameter-variable-converters">
+<h2>파라미터 변수 변환<a class="headerlink" href="#parameter-variable-converters" title="제목 주소">¶</a></h2>
+<p>Connexion은 Flask의 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">path</span></code> 라우트 파라미터 <a class="reference external" href="http://flask.pocoo.org/docs/0.12/quickstart/#variable-rules">variable converters</a>를 지원한다. 라우트 파라미터의 타입을 <code class="docutils literal notranslate"><span class="pre">integer</span></code>나 <code class="docutils literal notranslate"><span class="pre">number</span></code>로 지정하거나 타입을 문자열로 지정하고 포맷을 이 변환기를 사용할 <code class="docutils literal notranslate"><span class="pre">path</span></code>로 지정해라. 예:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">paths</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">/greeting/{name}</span><span class="p p-Indicator">:</span>
+    <span class="c1"># ...</span>
+    <span class="nt">parameters</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+        <span class="nt">in</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">path</span>
+        <span class="nt">required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="nt">format</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">path</span>
+</pre></div>
+</div>
+<p>위 스펙은 동등한 Flask 경로 <code class="docutils literal notranslate"><span class="pre">/greeting/&lt;path:name&gt;</span></code>를 생성해, 요청 시 <code class="docutils literal notranslate"><span class="pre">name</span></code> url 변수 안에 슬래시(<code class="docutils literal notranslate"><span class="pre">/</span></code>)를 포함할 수 있다.</p>
+</div>
+<div class="section" id="api-versioning-and-basepath">
+<h2>API 버전과 기본경로(basePath)<a class="headerlink" href="#api-versioning-and-basepath" title="제목 주소">¶</a></h2>
+<p>기본 경로(base path)를 설정하는 것은 버전이 있는 API에 유용하다. 기본 경로의 예는 <code class="docutils literal notranslate"><span class="pre">http://MYHOST/1.0/hello_world</span></code>에서 <code class="docutils literal notranslate"><span class="pre">1.0</span></code>이다.</p>
+<p>OpenAPI 3.x.x을 쓴다면, 스펙의 <code class="docutils literal notranslate"><span class="pre">servers</span></code> 블록에 기본 URL 경로를 설정해라. 전체 URL이나 상대 경로를 지정할 수 있다.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">servers</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://MYHOST/1.0</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">full url example</span>
+  <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/1.0</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">relative path example</span>
+
+<span class="nt">paths</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>OpenAPI 2.0을 쓴다면, OpenAPI 2.0 스펙의 최상위 레벨에 <code class="docutils literal notranslate"><span class="pre">basePath</span></code>를 정의할 수 있다.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">basePath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/1.0</span>
+
+<span class="nt">paths</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<p>기본 경로(base path)를 스펙에 넣지 않고 싶으면 API를 어플리케이션에 추가할 때 제공할 수 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_api.yaml&#39;</span><span class="p">,</span> <span class="n">base_path</span><span class="o">=</span><span class="s1">&#39;/1.0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="swagger-json">
+<h2>Swagger JSON<a class="headerlink" href="#swagger-json" title="제목 주소">¶</a></h2>
+<p>Connexion은 JSON 형식의 OpenAPI/Swagger 스펙을 API의 기본 경로의 <code class="docutils literal notranslate"><span class="pre">swagger.json</span></code>에서 사용할 수 있게 한다.</p>
+<p>Swagger JSON을 어플리케이션 레벨에서 사용할 수 없게 할 수 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;swagger/&#39;</span><span class="p">,</span>
+                    <span class="n">swagger_json</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_api.yaml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>API 레벨에서 사용할 수 없게 할 수도 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;swagger/&#39;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_api.yaml&#39;</span><span class="p">,</span> <span class="n">swagger_json</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="request.html" class="btn btn-neutral float-right" title="요청 핸들링" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cli.html" class="btn btn-neutral float-left" title="커맨드 라인 인터페이스(CLI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zalando SE
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

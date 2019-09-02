@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>보안 &mdash; Connexion 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="Connexion Cookbook" href="cookbook.html" />
+    <link rel="prev" title="응답 처리" href="response.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Connexion
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">시작하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">커맨드 라인 인터페이스(CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing.html">라우팅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">요청 핸들링</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">응답 처리</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">보안</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#oauth-2-authentication-and-authorization">OAuth 2 인증과 권한</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-authentication">기본 인증</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apikey-authentication">ApiKey 인증</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bearer-authentication-jwt">Bearer 인증 (JWT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#https-support">HTTPS 지원</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Connexion Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Connexion</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>보안</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/security.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="security">
+<h1>보안<a class="headerlink" href="#security" title="제목 주소">¶</a></h1>
+<div class="section" id="oauth-2-authentication-and-authorization">
+<h2>OAuth 2 인증과 권한<a class="headerlink" href="#oauth-2-authentication-and-authorization" title="제목 주소">¶</a></h2>
+<p>Connexion은 세가지 OAuth2 처리 방법 중 하나를 지원한다. Connexion을 사용하면 <strong>반드시</strong> API 보안 정의에 <code class="docutils literal notranslate"><span class="pre">x-tokenInfoFunc</span></code>를 포함하거나 <code class="docutils literal notranslate"><span class="pre">TOKENINFO_FUNC</span></code> 환경변수를 설정해야 한다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">x-tokenInfoFunc</span></code>은 토큰 정보를 가져오는 함수에 대한 참조를 포함한다. 이 참조는 라우팅할 때 <code class="docutils literal notranslate"><span class="pre">operationId</span></code>를 파이썬 함수에 연결하는데 사용되는 것과 동일한 문법을 사용한 문자열이어야 한다. 예를 들어, <code class="docutils literal notranslate"><span class="pre">auth.verifyToken</span></code>의 <code class="docutils literal notranslate"><span class="pre">x-tokenInfoFunc</span></code>은 사용자의 토큰 문자열을 <code class="docutils literal notranslate"><span class="pre">auth.py</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">verifyToken</span></code> 함수에 전달한다. 참조된 함수는 토큰 문자열을 인수로 받고, 공백으로 구분된 리스트나 제공된 토큰에 포함된 범위(scopes)의 배열인 <code class="docutils literal notranslate"><span class="pre">scope</span></code> 필드를 포함하는 딕셔너리를 반환한다. 이 범위 리스트는 유효성이 검사된다. 검사는 API 보안 정의에서 사용자에게 권한이 있는지 결정하는 데 필요한 범위에 대해 진행된다. <code class="docutils literal notranslate"><span class="pre">x-scopeValidateFunc</span></code>나 <code class="docutils literal notranslate"><span class="pre">SCOPEVALIDATE_FUNC</span></code> 환경 변수를 설정해서 사용자 정의 범위 유효성 검사 함수를 제공할 수 있다. 기본적으로는 <code class="docutils literal notranslate"><span class="pre">connexion.decorators.security.validate_scope</span></code>가 사용된다.</p>
+<p>권장되는 방식은 <a class="reference external" href="https://tools.ietf.org/html/rfc7662">RFC 7662</a>를 따르는 딕셔너리를 반환하는 것이다. <code class="docutils literal notranslate"><span class="pre">active</span></code>나 <code class="docutils literal notranslate"><span class="pre">exp</span></code> 필드 등의 유효성을 직접 검사해야 함을 유의해라.</p>
+<p>Token Info 응답의 <code class="docutils literal notranslate"><span class="pre">sub</span></code> 속성은 핸들러 함수에 대한 <code class="docutils literal notranslate"><span class="pre">user</span></code> 인수에 전달될 것이다.</p>
+<p>이전 버전과의 호환을 위해 남아있지만 사용하지 않는 기능:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">x-tokenInfoFunc</span></code> 대신 <code class="docutils literal notranslate"><span class="pre">x-tokenInfoUrl</span></code>나 <code class="docutils literal notranslate"><span class="pre">TOKENINFO_URL</span></code> 환경변수를 설정할 수 있다. 유효성을 검사하고 <a class="reference external" href="https://tools.ietf.org/html/rfc6749">RFC 6749</a>을 따르는 토큰 정보를 얻으려면 URL을 포함해야 한다. <code class="docutils literal notranslate"><span class="pre">x-tokenInfoUrl</span></code>과 <code class="docutils literal notranslate"><span class="pre">x-tokenInfoFunc</span></code>이 모두 사용되면, Connexion은 함수 메소드의 우선 순위를 정한다. Connexion은 권한 부여 서버가 <a class="reference external" href="https://tools.ietf.org/html/rfc6750">RFC 6750</a> 섹션 2.1에 기술된 형식으로 <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> 헤더 필드에 OAuth 토큰을 받기를 기대한다. 이 측면에서 일반적인 OAuth와 큰 차이가 있다.</li>
+<li><code class="docutils literal notranslate"><span class="pre">scope</span></code> 필드는 <code class="docutils literal notranslate"><span class="pre">scopes</span></code>라고도 명명될 수 있다.</li>
+<li><code class="docutils literal notranslate"><span class="pre">sub</span></code> 필드는 <code class="docutils literal notranslate"><span class="pre">uid</span></code>라고 명명될 수도 있다.</li>
+</ul>
+<p>Connexion의 <cite>examples</cite> 폴더에서 <a class="reference external" href="https://github.com/zalando/connexion/tree/master/examples/swagger2/oauth2">minimal OAuth example application</a>를 볼 수 있다.</p>
+</div>
+<div class="section" id="basic-authentication">
+<h2>기본 인증<a class="headerlink" href="#basic-authentication" title="제목 주소">¶</a></h2>
+<p>Connexion을 사용하면, <strong>반드시</strong> API 보안 정의에 <code class="docutils literal notranslate"><span class="pre">x-basicInfoFunc</span></code>을 포함하거나 <code class="docutils literal notranslate"><span class="pre">BASICINFO_FUNC</span></code> 환경 변수를 설정해야 한다. <code class="docutils literal notranslate"><span class="pre">x-tokenInfoFunc</span></code>와 동일한 의미론을 사용하지만, 함수는 세가지 파라미터(username, password, required_scopes)를 받는다. 작업의 보안 선언에도 oauth 보안 요구가 있는 경우, <cite>required_scopes</cite>는 거기에서 가져와지고, 없는 경우에는 <cite>None</cite>이다. 따라서 기본 인증을 사용할 때 oauth 범위로 개별 작업에 대한 인증을 할 수 있다.</p>
+<p>Connexion의 <cite>examples</cite> 폴더에서 <a class="reference external" href="https://github.com/zalando/connexion/tree/master/examples/swagger2/basicauth">minimal Basic Auth example application</a>을 볼 수 있다.</p>
+</div>
+<div class="section" id="apikey-authentication">
+<h2>ApiKey 인증<a class="headerlink" href="#apikey-authentication" title="제목 주소">¶</a></h2>
+<p>Connexion을 사용하면 API 보안 정의는 <strong>반드시</strong> <code class="docutils literal notranslate"><span class="pre">x-apikeyInfoFunc</span></code>을 포함하거나, <code class="docutils literal notranslate"><span class="pre">APIKEYINFO_FUNC</span></code> 환경변수를 설정해야 한다. <code class="docutils literal notranslate"><span class="pre">x-basicInfoFunc</span></code>과 동일한 의미론을 가지나, 함수는 두 개의 파라미터(apikey, required_scopes)를 받는다.</p>
+<p>Connexion의 <cite>examples</cite> 폴더에서 <a class="reference external" href="https://github.com/zalando/connexion/tree/master/examples/oauth2/apikey">minimal API Key example application</a>을 볼 수 있다.</p>
+</div>
+<div class="section" id="bearer-authentication-jwt">
+<h2>Bearer 인증 (JWT)<a class="headerlink" href="#bearer-authentication-jwt" title="제목 주소">¶</a></h2>
+<p>Connexion을 사용하면, API 보안 정의는 <strong>반드시</strong> <code class="docutils literal notranslate"><span class="pre">x-bearerInfoFunc</span></code>을 포함하거나, <code class="docutils literal notranslate"><span class="pre">BEARERINFO_FUNC</span></code> 환경변수를 설정해야 한다. <code class="docutils literal notranslate"><span class="pre">x-tokenInfoFunc</span></code>과 동일한 의미론으로 사용하지만 함수는 하나의 파라미터(token)를 받는다.</p>
+<p>Connexion의 <cite>examples/openapi3</cite> 폴더에서 <a class="reference external" href="https://github.com/zalando/connexion/tree/master/examples/openapi3/jwt">minimal JWT example application</a>을 볼 수 있다.</p>
+</div>
+<div class="section" id="https-support">
+<h2>HTTPS 지원<a class="headerlink" href="#https-support" title="제목 주소">¶</a></h2>
+<p>API YAML 파일 스키마로 HTTPS를 지정할 때, 제공된 Swagger UI의 모든 URI는 HTTPS 엔드포인드다. 문제: 실행하는 기본 서버가 “일반적인” HTTP 서버다. 즉, API를 실행해 볼 때 Swagger UI를 사용할 수 없다. Connexion을 통해 HTTPS 서버를 시작할 때 올바른 방법은 무엇일까?</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cookbook.html" class="btn btn-neutral float-right" title="Connexion Cookbook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="response.html" class="btn btn-neutral float-left" title="응답 처리" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zalando SE
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

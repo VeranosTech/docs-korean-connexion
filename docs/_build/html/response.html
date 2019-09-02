@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>응답 처리 &mdash; Connexion 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="보안" href="security.html" />
+    <link rel="prev" title="요청 핸들링" href="request.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Connexion
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">시작하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">커맨드 라인 인터페이스(CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing.html">라우팅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">요청 핸들링</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">응답 처리</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#response-serialization">응답 직렬과</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-json-encoder">사용자 정의 JSON encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#returning-status-codes">상태 코드 반환</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#returning-headers">헤더 반환</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#response-validation">응답 검증</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-validator">사용자 정의 검증기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-handling">에러 핸들링</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">보안</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Connexion Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Connexion</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>응답 처리</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/response.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="response-handling">
+<h1>응답 처리<a class="headerlink" href="#response-handling" title="제목 주소">¶</a></h1>
+<div class="section" id="response-serialization">
+<h2>응답 직렬과<a class="headerlink" href="#response-serialization" title="제목 주소">¶</a></h2>
+<p>엔드포인트가 <cite>Response</cite> 객체를 반환할 경우 이 응답이 그대로 사용된다.</p>
+<p>아니면, 엔드포인트가 JSON만 반환하도록 스펙(specification) 정의되어 있다면, 이것은 자동적으로 리턴값을 직렬화 하고, 알맞은 HTTP header content type을 설정한다.</p>
+<p>엔드 포인트가 단일 JSON이 아닌 MIME 타입을 생성하면 Connexion은 자동으로 알맞은 HTTP header content type을 설정한다.</p>
+<div class="section" id="customizing-json-encoder">
+<h3>사용자 정의 JSON encoder<a class="headerlink" href="#customizing-json-encoder" title="제목 주소">¶</a></h3>
+<p>Connexion은 플라스크 앱 인스턴스 안에 있는 <cite>json_encoder</cite> (<cite>connexion.App:app</cite>) 의 <cite>JSONEncoder</cite> 클래스를 사용자 정의 할 수 있게 한다. 만약 Connexion의 date-time 직렬화를 재사용하고 싶다면, <cite>connexion.apps.flask_app.FlaskJSONEncoder</cite>사용자 인코더를 상속한다.</p>
+</div>
+</div>
+<div class="section" id="returning-status-codes">
+<h2>상태 코드 반환<a class="headerlink" href="#returning-status-codes" title="제목 주소">¶</a></h2>
+<p>지정한 상태 코드(status code)를 반환 할 수 있는 두가지 방법이 있다.</p>
+<p>한 가지 방법은 변경되지 않고 사용될 <cite>Response</cite>객체를 반환하는 것이다.</p>
+<p>다른 방법은 반환값 안의 두번째 값을 상태 값으로 반환한다. 아래 예제를 참조.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_endpoint</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Not Found&#39;</span><span class="p">,</span> <span class="mi">404</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="returning-headers">
+<h2>헤더 반환<a class="headerlink" href="#returning-headers" title="제목 주소">¶</a></h2>
+<p>당신의 엔드포인트에서 헤더(headers)를 반환하는 두 가지 방법이 있다.</p>
+<p>한 가지 방법은 변경되지 않고 사용될 <cite>Response</cite>객체를 반환하는 것이다.</p>
+<p>다른 방법은 반환값 안의 세 번째 값에 헤더 값들을 포함한 사전 객체를 반환하는 것이다:</p>
+<p>예를 들어</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_endpoint</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;Not Found&#39;</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;x-error&#39;</span><span class="p">:</span> <span class="s1">&#39;not found&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="response-validation">
+<h2>응답 검증<a class="headerlink" href="#response-validation" title="제목 주소">¶</a></h2>
+<p>기본적인 Connexion 설정은 응답에 대한 검증을 하지 않는다. API를 추가하면서 옵션을 설정함으로서 검증과정을 할 수 있다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">connexion</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;swagger/&#39;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_api.yaml&#39;</span><span class="p">,</span> <span class="n">validate_responses</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>jsonschema</cite>을 사용하여 모든 응답들을 검증한다. 이것은 특히 개발 과정에서 유용하다.</p>
+</div>
+<div class="section" id="custom-validator">
+<h2>사용자 정의 검증기<a class="headerlink" href="#custom-validator" title="제목 주소">¶</a></h2>
+<p>기본적으로, 응답 body contents는 <code class="docutils literal notranslate"><span class="pre">connexion.decorators.response.ResponseValidator</span></code>의 OpenAPI 스키마를 통해 검증되어진다. 만약 이 검증을 변경하고 싶다면 이 기본 클래스를 오버라이드 할 수 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">validator_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;response&#39;</span><span class="p">:</span> <span class="n">CustomResponseValidator</span>
+<span class="p">}</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;api.yaml&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">validator_map</span><span class="o">=</span><span class="n">validator_map</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="error-handling">
+<h2>에러 핸들링<a class="headerlink" href="#error-handling" title="제목 주소">¶</a></h2>
+<p>Connexion의 에러 메시지들은 <a class="reference external" href="https://tools.ietf.org/html/draft-ietf-appsawg-http-problem-00">Problem Details for HTTP APIs</a>에 나와있는 것처럼 JSON 직렬화 된다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">connexion.problem</span></code>을 통해 어플리케이션은 에러를 반환할 수 있다.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="security.html" class="btn btn-neutral float-right" title="보안" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="request.html" class="btn btn-neutral float-left" title="요청 핸들링" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zalando SE
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

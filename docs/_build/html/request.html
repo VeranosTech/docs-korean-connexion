@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>요청 핸들링 &mdash; Connexion 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="응답 처리" href="response.html" />
+    <link rel="prev" title="라우팅" href="routing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Connexion
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">시작하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">커맨드 라인 인터페이스(CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing.html">라우팅</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">요청 핸들링</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#request-validation">요청에 대한 유효성 검사</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-parameter-handling">자동 파라미터 핸들링</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#type-casting">타입 변환</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameter-validation">파라미터 유효성 검사</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nullable-parameters">Null이 가능한 파라미터</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#header-parameters">헤더 파라미터</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-validators">사용자 정의 검사기</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">응답 처리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">보안</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Connexion Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Connexion</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>요청 핸들링</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/request.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="request-handling">
+<h1>요청 핸들링<a class="headerlink" href="#request-handling" title="제목 주소">¶</a></h1>
+<p>Connexion는 swagger 스펙에 설명된 스키마를 지키기 위해 들어오는 요청에 대한 유효성을 검사한다.</p>
+<p>요청 파라미터는 함수의 서명에 포함된 경우 키워드 인수로 핸들러 함수에 제공된다. 그렇지 않으면 본문 파라미터는 <code class="docutils literal notranslate"><span class="pre">connexion.request.json</span></code>에서 접근할 수 있으며, 쿼리 파라미터는 <code class="docutils literal notranslate"><span class="pre">connexion.request.args</span></code>에서 접근할 수 있다.</p>
+<div class="section" id="request-validation">
+<h2>요청에 대한 유효성 검사<a class="headerlink" href="#request-validation" title="제목 주소">¶</a></h2>
+<p>요청 본문과 파라미터는 모두 <a class="reference external" href="https://pypi.python.org/pypi/jsonschema">jsonschema</a>를 사용해 스펙에 대해 유효성이 검사된다.</p>
+<p>요청이 스펙과 일치하지 않으면 connexion은 400 에러를 반환한다.</p>
+</div>
+<div class="section" id="automatic-parameter-handling">
+<h2>자동 파라미터 핸들링<a class="headerlink" href="#automatic-parameter-handling" title="제목 주소">¶</a></h2>
+<p>Connexion은 엔드포인트 스펙에 정의된 파라미터를, 명명된 파라미터로 파이썬 뷰의 인수에 자동으로 매핑하며, 가능할 때마다 값 캐스팅이 이뤄진다.</p>
+<p>엔드포인트 스펙의 예:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">paths</span><span class="p">:</span>
+  <span class="nt">/foo</span><span class="p">:</span>
+    <span class="nt">get</span><span class="p">:</span>
+      <span class="nt">operationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">api.foo_get</span>
+      <span class="nt">parameters</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">message</span>
+          <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Some message.</span>
+          <span class="nt">in</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">query</span>
+          <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+          <span class="nt">required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>그리고 뷰 함수다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># api.py file</span>
+
+<span class="k">def</span> <span class="nf">foo_get</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="c1"># do something</span>
+    <span class="k">return</span> <span class="s1">&#39;You send the message: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">message</span><span class="p">),</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>이 예제에서 Connexion은 뷰 함수가 <cite>message</cite>라는 인수를 받는 것을 자동으로 인식하고, 엔드포인트 파라미터 <cite>message</cite>의 값을 뷰 함수에 할당한다.</p>
+<p>Connexion은 디폴트 값을 제공하면 그것을 사용한다.</p>
+<p>If you want to use a parameter name that collides with a Python built-in,
+you can enable the <cite>pythonic_params</cite> option:</p>
+<p>With this option enabled, Connexion firstly converts <em>CamelCase</em> names
+to <em>snake_case</em>. Secondly it looks to see if the name matches a known built-in
+and if it does it appends an underscore to the name.</p>
+<p>엔드포인트 스펙의 예:</p>
+<p>그리고 뷰 함수다:</p>
+<div class="admonition note">
+<p class="first admonition-title">주석</p>
+<p class="last">OpenAPI 3.x.x 스펙에서는, requestBody는 이름이 없다. 기본적으로 ‘body’로 전달된다. 옵션으로, 핸들러 함수에 전달되는 파라미터의 이름을 오버라이드 하기 위해 requestBody 스키마에 x-body-name 파라미터를 제공할 수 있다.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">경고</p>
+<p class="last">엗드포인트에 필수가 <em>아닌</em> 파라미터가 있고, 파이썬 뷰에 명시되지 않은 인수가 있을 때, 파라미터 없이 이 엔드포인트를 호출하면 위치 인수가 없는 것에 대한 에러가 발생할 것이다.</p>
+</div>
+<div class="section" id="type-casting">
+<h3>타입 변환<a class="headerlink" href="#type-casting" title="제목 주소">¶</a></h3>
+<p>가능할 때 Connexion은 인수 값을 파싱하며, 관련된 파이썬 값으로 타입 변환(casting)이 이뤄진다. 현재 사용 가능한 타입 변환이다.:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">OpenAPI 타입</th>
+<th class="head">Python 타입</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>integer</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>string</td>
+<td>str</td>
+</tr>
+<tr class="row-even"><td>number</td>
+<td>float</td>
+</tr>
+<tr class="row-odd"><td>boolean</td>
+<td>bool</td>
+</tr>
+<tr class="row-even"><td>array</td>
+<td>list</td>
+</tr>
+<tr class="row-odd"><td>null</td>
+<td>None</td>
+</tr>
+<tr class="row-even"><td>object</td>
+<td>dict</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">주석</p>
+<p class="last"><cite>collectionFormat</cite>에 대한 자세한 내용을 보고싶으면 공식 <a class="reference external" href="https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/2.0.md#fixed-fields-7">OpenAPI 2.0 Specification</a>를 확인해라.</p>
+</div>
+<p>In the <a class="reference external" href="https://github.com/OAI/OpenAPI-Specification/blob/OpenAPI.next/versions/2.0.md#fixed-fields-7">OpenAPI 2.0 Specification</a> if you use the <code class="docutils literal notranslate"><span class="pre">array</span></code> type,
+you can define the <code class="docutils literal notranslate"><span class="pre">collectionFormat</span></code> to set the deserialization behavior.
+Connexion currently supports &quot;pipes&quot; and &quot;csv&quot; as collection formats.
+The default format is &quot;csv&quot;.</p>
+<p>Connexion은 URI가 <code class="docutils literal notranslate"><span class="pre">array</span></code> 타입을 어떻게 파싱할지에 대해 논의 중이다. 여러 번 정의된 쿼리 파라미터에 대한 기본 동작은 모든 것을 합치는 것이다. 예를 들어, URI와 쿼리 문자열 <code class="docutils literal notranslate"><span class="pre">?letters=a,b,c&amp;letters=d,e,f</span></code>을 보내면, connexion은 <code class="docutils literal notranslate"><span class="pre">letters</span> <span class="pre">=</span> <span class="pre">[‘a’,</span> <span class="pre">‘b’,</span> <span class="pre">‘c’,</span> <span class="pre">‘d’,</span> <span class="pre">‘e’,</span> <span class="pre">‘f’]</span></code>로 설정한다.</p>
+<p>앱이나 api 옵션의 URI 파서를 지정해 이 동작을 오버라이드 할 수 있다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">connexion.decorators.uri_parsing</span> <span class="kn">import</span> <span class="n">Swagger2URIParser</span>
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;uri_parsing_class&#39;</span><span class="p">:</span> <span class="n">Swagger2URIParser</span><span class="p">}</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">App</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;swagger/&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">connextion.decorators.uri_parsing.AbstractURIParser</span></code>에서 상속받아 사용자만의 URI 파싱 동작을 구현할 수 있다.</p>
+<p>connexion은 소수의 URI 파서를 포함하고 있다.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>OpenAPIURIParser
+default: OpenAPI 3.0</td>
+<td>이 파서는 OpenAPI 3.x.x 스펙을 준수하며, <code class="docutils literal notranslate"><span class="pre">style</span></code> 파라미터를 사용한다. 쿼리 파라미터는 왼쪽에서 오른쪽으로 파싱되므로, 쿼리 파라미터가 두번 정의된 경우 맨 오른쪽 정의가 우선 적용된다. 예를 들어, 쿼리 문자열 <code class="docutils literal notranslate"><span class="pre">?letters=a,b,c&amp;letters=d,e,f</span></code>과 <code class="docutils literal notranslate"><span class="pre">style:</span> <span class="pre">simple</span></code>이 URI에 함께 제공되면, connexion은 <code class="docutils literal notranslate"><span class="pre">letters</span> <span class="pre">=</span> <span class="pre">[‘d’,</span> <span class="pre">‘e’,</span> <span class="pre">‘f’]</span></code>을 설정한다. 추가적인 정보는 <a href="#id2"><span class="problematic" id="id3">`OpenAPI 3.0 Style Values`_</span></a>를 봐라.</td>
+</tr>
+<tr class="row-even"><td>Swagger2URIParser
+default: OpenAPI 2.0</td>
+<td>이 파서는 Swagger 2.0 스펙을 준수하며, <code class="docutils literal notranslate"><span class="pre">collectionFormat</span></code>이 <code class="docutils literal notranslate"><span class="pre">multi</span></code>로 설정된 경우, 동일 쿼리 파라미터의 여러 인스턴스를 결합한다. 쿼리 파라미터는 왼쪽에서 오른쪽으로 파싱되므로, 쿼리 파라미터가 두번 정의되면 가장 오른쪽에 있는 정의가 선택된다. 예를 들어, 쿼리 문자열 <code class="docutils literal notranslate"><span class="pre">?letters=a,b,c&amp;letters=d,e,f</span></code>와 <code class="docutils literal notranslate"><span class="pre">collectionFormat:</span> <span class="pre">csv</span></code>가 URI와 함께 제공되면, connexion은 <code class="docutils literal notranslate"><span class="pre">letters</span> <span class="pre">=</span> <span class="pre">[‘d’,</span> <span class="pre">‘e’,</span> <span class="pre">‘f’]</span></code>을 설정한다.</td>
+</tr>
+<tr class="row-odd"><td>FirstValueURIParser</td>
+<td>이 파서는 첫번째 정의된 값을 우선 적용한다는 것 외에는 Swagger2URIParser와 같이 작동한다. 예를 들어, 쿼리 문자열 <code class="docutils literal notranslate"><span class="pre">?letters=a,b,c&amp;letters=d,e,f</span></code>와 <code class="docutils literal notranslate"><span class="pre">collectionFormat:</span> <span class="pre">csv</span></code>를 URI와 함께 제공하면, connexion은 <code class="docutils literal notranslate"><span class="pre">letters</span> <span class="pre">=</span> <span class="pre">[‘a’,</span> <span class="pre">‘b’,</span> <span class="pre">‘c’]</span></code>을 설정한다.</td>
+</tr>
+<tr class="row-even"><td>AlwaysMultiURIParser</td>
+<td>이 파서는 Connexion 1.x과 역 호환이 가능하다. 동일한 쿼리 파라미터의 여러 인스턴스를 결합한다.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="parameter-validation">
+<h3>파라미터 유효성 검사<a class="headerlink" href="#parameter-validation" title="제목 주소">¶</a></h3>
+<p>Connexion는 쿼리와 form data 파라미터에 대한 엄격한 유효성 검사를 적용할 수 있다. 이것이 활성화 되면, swagger 스펙에 정의되지 않은 파라미터를 포함한 요청은 400 에러를 반환한다. 어플리케이션에 API를 추가할 때 활성화할 수 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_apy.yaml&#39;</span><span class="p">,</span> <span class="n">strict_validation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nullable-parameters">
+<h3>Null이 가능한 파라미터<a class="headerlink" href="#nullable-parameters" title="제목 주소">¶</a></h3>
+<p>종종 API는 명시적으로 <a class="reference external" href="https://github.com/zalando/connexion/issues/182">nullable parameters</a>를 받아야 한다. 하지만 openAPI 스펙은 현재 공식적으로 이 방식을 지원하지 않는다. Connexion은 <cite>x-nullable</cite> 벤더 확장을 파라미터 정의에 추가한다. 사용법은 아래와 같다.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">/countries/cities</span><span class="p">:</span>
+   <span class="nt">parameters</span><span class="p">:</span>
+     <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">name</span>
+       <span class="nt">in</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">query</span>
+       <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+       <span class="nt">x-nullable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+       <span class="nt">required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Connexion은 모든 파라미터 타입(<cite>body</cite>, <cite>query</cite>, <cite>formData</cite>, <cite>path</cite>)에 대해서 이를 지원한다. Null이 가능한 값은 문자열 <cite>null</cite>과 <cite>None</cite>이다.</p>
+<div class="admonition warning">
+<p class="first admonition-title">경고</p>
+<p class="last">“null” 또는 “None” 문자열이 유효한 값일 수 있는 민감한 데이터의 nullable 파라미터에 주의해라.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">주석</p>
+<p class="last">이 확장은 OpenAPI/Swagger 스펙이 공식적으로 nullable 값을 지원할 때 제거될 것이다.</p>
+</div>
+</div>
+</div>
+<div class="section" id="header-parameters">
+<h2>헤더 파라미터<a class="headerlink" href="#header-parameters" title="제목 주소">¶</a></h2>
+<p>현재, 헤더 파라미터는 핸들러 함수에 파라미터로 전달되지 않는다. 그러나 <code class="docutils literal notranslate"><span class="pre">flask.request.headers</span></code> 객체의 별칭(alias)인 <code class="docutils literal notranslate"><span class="pre">connexion.request.headers</span></code> 객체를 통해 엑세스 할 수 있다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="n">page_number</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Page-Number&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-validators">
+<h2>사용자 정의 검사기<a class="headerlink" href="#custom-validators" title="제목 주소">¶</a></h2>
+<p>기본적으로, 본문과 파라미터 내용은 OpenAPI 스키마에 대해 <code class="docutils literal notranslate"><span class="pre">connexion.decorators.validation.RequestBodyValidator</span></code> 혹은 <code class="docutils literal notranslate"><span class="pre">connexion.decorators.validation.ParameterValidator</span></code>를 통해 유효성이 검사된다. 유효성을 변경하려면, 아래 방법과 같이 기본값을 오버라이드할 수 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">validator_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">CustomRequestBodyValidator</span><span class="p">,</span>
+    <span class="s1">&#39;parameter&#39;</span><span class="p">:</span> <span class="n">CustomParameterValidator</span>
+<span class="p">}</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;api.yaml&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">validator_map</span><span class="o">=</span><span class="n">validator_map</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>사용자 정의 검사기 예제는 <code class="docutils literal notranslate"><span class="pre">examples/enforcedefaults</span></code>에서 봐라.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="response.html" class="btn btn-neutral float-right" title="응답 처리" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="routing.html" class="btn btn-neutral float-left" title="라우팅" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zalando SE
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

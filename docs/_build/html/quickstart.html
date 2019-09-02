@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>시작하기 &mdash; Connexion 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="색인" href="genindex.html" />
+    <link rel="search" title="검색" href="search.html" />
+    <link rel="next" title="커맨드 라인 인터페이스(CLI)" href="cli.html" />
+    <link rel="prev" title="컨넥션 문서" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Connexion
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">시작하기</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">사전 요구사항</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-it">설치하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-it">실행하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-rendering-of-your-specification">specification에 대한 다이나믹 렌더링</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-swagger-ui-console">Swagger UI 콘솔</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#server-backend">서버 백엔드</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">커맨드 라인 인터페이스(CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routing.html">라우팅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">요청 핸들링</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">응답 처리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">보안</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Connexion Cookbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exception Handling</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Connexion</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>시작하기</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/quickstart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quickstart">
+<h1>시작하기<a class="headerlink" href="#quickstart" title="제목 주소">¶</a></h1>
+<div class="section" id="prerequisites">
+<h2>사전 요구사항<a class="headerlink" href="#prerequisites" title="제목 주소">¶</a></h2>
+<p>Python 2.7 or Python 3.5+</p>
+</div>
+<div class="section" id="installing-it">
+<h2>설치하기<a class="headerlink" href="#installing-it" title="제목 주소">¶</a></h2>
+<p>코맨드 라인에서 아래 명령을 실행한다.:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install connexion<span class="o">[</span>swagger-ui<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-it">
+<h2>실행하기<a class="headerlink" href="#running-it" title="제목 주소">¶</a></h2>
+<p>API YAML을 어플리케이션의 최상위 폴더(e.g. <code class="docutils literal notranslate"><span class="pre">openapi/</span></code>)에 넣는다</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">connexion</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;openapi/&#39;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_api.yaml&#39;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dynamic-rendering-of-your-specification">
+<h2>specification에 대한 다이나믹 렌더링<a class="headerlink" href="#dynamic-rendering-of-your-specification" title="제목 주소">¶</a></h2>
+<p>Connexion은 <cite>arguments</cite> 인수로 받은 값을 <a class="reference external" href="http://jinja.pocoo.org/">Jinja2</a>를 사용하여 specification에 렌더링 할 수 있다. 또한 <cite>connexion.App</cite>  생성자 안의 어플리케이션이나 <cite>connexion.App#add_api</cite>의 특정 API에 대한 인수를 전역적으로 정의할 수 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;openapi/&#39;</span><span class="p">,</span>
+                    <span class="n">arguments</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;global&#39;</span><span class="p">:</span> <span class="s1">&#39;global_value&#39;</span><span class="p">})</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_api.yaml&#39;</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;api_local&#39;</span><span class="p">:</span> <span class="s1">&#39;local_value&#39;</span><span class="p">})</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>전역값과 API값 모두 주어지면, API로 받은 값이 우선한다.</p>
+</div>
+<div class="section" id="the-swagger-ui-console">
+<h2>Swagger UI 콘솔<a class="headerlink" href="#the-swagger-ui-console" title="제목 주소">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">{base_path}/ui/</span></code>에서 API에 대한 Swagger UI를 디폴트로 사용할 수 있다. <code class="docutils literal notranslate"><span class="pre">base_path</span></code>는 API의 기본 경로(base path)다.</p>
+<p>어플리케이션 레벨에서 Swagger UI를 사용하지 않게 할 수 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;swagger_ui&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;openapi/&#39;</span><span class="p">,</span>
+                    <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_api.yaml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>API 레벨에서도 사용하지 않게 할 수 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;swagger_ui&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;openapi/&#39;</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_api</span><span class="p">(</span><span class="s1">&#39;my_api.yaml&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="server-backend">
+<h2>서버 백엔드<a class="headerlink" href="#server-backend" title="제목 주소">¶</a></h2>
+<p>기본적으로 connexion은 디폴트 flask 서버를 사용한다. 하지만 <a class="reference external" href="http://www.tornadoweb.org/en/stable/">Tornado</a>나 <a class="reference external" href="http://www.gevent.org/">gevent</a>를 HTTP 서버로 사용할 수도 있다. 이를 위해서 서버를 <code class="docutils literal notranslate"><span class="pre">tornado</span></code>나 <code class="docutils literal notranslate"><span class="pre">gevent</span></code>로 지정한다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">connexion</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">FlaskApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="mi">8080</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;openapi/&#39;</span><span class="p">,</span> <span class="n">server</span><span class="o">=</span><span class="s1">&#39;tornado&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Connexion은 <code class="docutils literal notranslate"><span class="pre">aiohttp</span></code> 프레임워크도 서버 백엔드로 가지고 있다:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">connexion</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">AioHttpApp</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="mi">8080</span><span class="p">,</span> <span class="n">specification_dir</span><span class="o">=</span><span class="s1">&#39;openapi/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cli.html" class="btn btn-neutral float-right" title="커맨드 라인 인터페이스(CLI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="컨넥션 문서" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Zalando SE
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
