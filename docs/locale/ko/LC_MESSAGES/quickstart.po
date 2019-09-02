@@ -51,7 +51,7 @@ msgstr "API YAML을 어플리케이션의 최상위 폴더(e.g. ``openapi/``)에
 
 #: ../../quickstart.rst:35
 msgid "Dynamic Rendering of Your Specification"
-msgstr "사양에 대한 다이나믹 렌더링"
+msgstr "specification에 대한 다이나믹 렌더링"
 
 #: ../../quickstart.rst:37
 msgid ""
@@ -68,7 +68,7 @@ msgstr ""
 msgid ""
 "When a value is provided both globally and on the API, the API value will"
 " take precedence."
-msgstr "전역값과 API값 모두 주어지면, API로 받은 값이 우선한다.\""
+msgstr "전역값과 API값 모두 주어지면, API로 받은 값이 우선한다."
 
 #: ../../quickstart.rst:53
 msgid "The Swagger UI Console"
@@ -80,7 +80,7 @@ msgid ""
 "``{base_path}/ui/`` where ``base_path`` is the base path of the API."
 msgstr ""
 "``{base_path}/ui/``\\ 에서 API에 대한 Swagger UI를 디폴트로 사용할 수 있다. "
-"``base_path``\\ 는 AIP의 기본 경로(base path)다."
+"``base_path``\\ 는 API의 기본 경로(base path)다."
 
 #: ../../quickstart.rst:57
 msgid "You can disable the Swagger UI at the application level:"
